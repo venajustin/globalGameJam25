@@ -8,4 +8,15 @@ theme:
 BUBBLE
 
 
+# Brainstorm
+
+
+- Old-school scooba gear
+- floating vs sinking balance
+- discovering fish
+
+### fighting game
+
+### race to the top
+
 
