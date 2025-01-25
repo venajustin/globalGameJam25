@@ -3,7 +3,11 @@
 importer="wavefront_obj"
 importer_version=1
 type="Mesh"
-uid="uid://cg77kgobwjqan"
+<<<<<<< HEAD
+uid="uid://ggiaim4aqin0"
+=======
+uid="uid://ckm3iy16tcnnu"
+>>>>>>> 6de76c9d0e08345690daa94dfc76cd47ef56cf96
 path="res://.godot/imported/Normal_Ducky.obj-11819b8605fe63c6f0dff7ac351b6b12.mesh"
 
 [deps]

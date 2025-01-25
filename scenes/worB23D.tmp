@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cbsmmf3l48uut" path="res://scenes/water.tscn" id="1_hi4q1"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="2_q0b02"]
-[ext_resource type="PackedScene" uid="uid://bxcn0ue8jjo7v" path="res://scenes/Soap1.tscn" id="3_8bjni"]
-[ext_resource type="Resource" uid="uid://duhpt75q2lvbx" path="res://resources/p1_controls.tres" id="3_ofyco"]
+[ext_resource type="PackedScene" uid="uid://bp57pugr1w5a5" path="res://scenes/Soap1.tscn" id="3_8bjni"]
+[ext_resource type="Resource" uid="uid://duhpt75q2lvbx" path="res://resources/p1_controls.tres" id="3_cyqgd"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_b2xwy"]
 
 [node name="World" type="Node"]
@@ -14,11 +14,14 @@ shadow_enabled = true
 
 [node name="Water" parent="." instance=ExtResource("1_hi4q1")]
 
-[node name="Player1" parent="." instance=ExtResource("2_q0b02")]
+[node name="Ducky" parent="." instance=ExtResource("2_q0b02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577929, 0)
-controls = ExtResource("3_ofyco")
+controls = ExtResource("3_cyqgd")
 
-[node name="Player2" parent="." instance=ExtResource("2_q0b02")]
+[node name="Camera3D" type="Camera3D" parent="Ducky"]
+transform = Transform3D(1, 0, 0, 0, 0.948035, 0.318165, 0, -0.318165, 0.948035, 0.00858021, 2.44315, 3.45707)
+
+[node name="Ducky2" parent="." instance=ExtResource("2_q0b02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294564, 0.822679, -1.13296)
 controls = ExtResource("4_b2xwy")
 
