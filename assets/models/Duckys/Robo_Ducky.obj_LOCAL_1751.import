@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bb0byjcui23u2"
+path="res://.godot/imported/Robo_Ducky.obj-b037c72a97471a70d1a2a555976879d3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Robo_Ducky.obj-b037c72a97471a70d1a2a555976879d3.mesh"]
+
+source_file="res://assets/models/Duckys/Robo_Ducky.obj"
+dest_files=["res://.godot/imported/Robo_Ducky.obj-b037c72a97471a70d1a2a555976879d3.mesh", "res://.godot/imported/Robo_Ducky.obj-b037c72a97471a70d1a2a555976879d3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
