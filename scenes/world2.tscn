@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckjrqyaybekxh"]
+[gd_scene load_steps=3 format=3 uid="uid://ckjrqyaybekxh"]
 
 [ext_resource type="PackedScene" uid="uid://cbsmmf3l48uut" path="res://scenes/water.tscn" id="1_erqmf"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="2_rwo4e"]
-[ext_resource type="PackedScene" uid="uid://bp57pugr1w5a5" path="res://assets/models/Soap1.tscn" id="3_u5hso"]
 
 [node name="World" type="Node"]
 
@@ -17,6 +16,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577929, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Ducky"]
 transform = Transform3D(1, 0, 0, 0, 0.948035, 0.318165, 0, -0.318165, 0.948035, 0.00858021, 2.44315, 3.45707)
-
-[node name="Soap4" parent="." instance=ExtResource("3_u5hso")]
-transform = Transform3D(5.74633, 0, 0, 0, 5.74633, 0, 0, 0, 5.74633, -15.2113, 0, -13.3036)

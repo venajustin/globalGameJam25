@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cbsmmf3l48uut" path="res://scenes/water.tscn" id="1_hi4q1"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="2_q0b02"]
-[ext_resource type="PackedScene" uid="uid://bp57pugr1w5a5" path="res://assets/models/Soap1.tscn" id="3_8bjni"]
+[ext_resource type="PackedScene" uid="uid://bp57pugr1w5a5" path="res://scenes/Soap1.tscn" id="3_8bjni"]
 
 [node name="World" type="Node"]
 

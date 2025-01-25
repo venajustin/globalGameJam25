@@ -16,7 +16,6 @@ render_priority = 0
 shader = ExtResource("3_ygk6s")
 
 [node name="Soap1" type="Node3D"]
-transform = Transform3D(5.74633, 0, 0, 0, 5.74633, 0, 0, 0, 5.74633, 0, 0, 0)
 
 [node name="Soap" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.99971, 0, 0, 0, 0.99971, 0, 0, 0, 0.99971, -0.0495847, 0.0146112, 0.214794)
