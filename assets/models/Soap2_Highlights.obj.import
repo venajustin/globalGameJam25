@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://duugdcylkn5co"
+path="res://.godot/imported/Soap2_Highlights.obj-839e2ab5bdf5f8e7d9f73c9d31c3f22a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Soap2_Highlights.obj-839e2ab5bdf5f8e7d9f73c9d31c3f22a.mesh"]
+
+source_file="res://assets/models/Soap2_Highlights.obj"
+dest_files=["res://.godot/imported/Soap2_Highlights.obj-839e2ab5bdf5f8e7d9f73c9d31c3f22a.mesh", "res://.godot/imported/Soap2_Highlights.obj-839e2ab5bdf5f8e7d9f73c9d31c3f22a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
