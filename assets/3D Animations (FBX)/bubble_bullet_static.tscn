@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpuafvprtcy1q"]
+
+[ext_resource type="Shader" uid="uid://cut1ic0ol88pj" path="res://Shaders/Outer_Bullet_Shader.tres" id="1_egtsj"]
+[ext_resource type="ArrayMesh" uid="uid://c432h7turlqll" path="res://assets/models/Bubble_Bullet.obj" id="2_i8opf"]
+[ext_resource type="Shader" uid="uid://g1ybutf7tmh5" path="res://Shaders/Inner_Bullet_Shader.tres" id="3_8pnox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vvpx"]
+render_priority = 0
+shader = ExtResource("1_egtsj")
+shader_parameter/Outer_Bullet_Shine_Strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xj00"]
+render_priority = 0
+shader = ExtResource("3_8pnox")
+
+[node name="Bubble_Bullet_Static" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010824, -5.96046e-08, -0.00237799)
+
+[node name="Outer_Bullet_Shine" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.987244, 0, 0, 0, 0.987244, 0, 0, 0, 0.987244, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_5vvpx")
+mesh = ExtResource("2_i8opf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.669574, 0, 0, 0, 0.669574, 0, 0, 0, 0.669574, 0, 0.0461934, 0)
+material_override = SubResource("ShaderMaterial_3xj00")
+mesh = ExtResource("2_i8opf")

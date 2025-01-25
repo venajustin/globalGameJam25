@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm0lmshg0o6gy"]
+
+[ext_resource type="PackedScene" uid="uid://dbaidanhipncm" path="res://assets/3D Animations (FBX)/Slow_Bullet_Shoot.fbx" id="1_dqcru"]
+
+[node name="Slow_Bullet_Shoot" instance=ExtResource("1_dqcru")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(0, 0, 0.00119979, 0.999999)
+bones/1/scale = Vector3(0.87757, 1.29856, 0.87757)
+bones/3/position = Vector3(0, 0.0171204, 0)
