@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmwxadby8lrsl"]
+[gd_scene load_steps=6 format=3 uid="uid://cmwxadby8lrsl"]
 
 [ext_resource type="PackedScene" uid="uid://cbsmmf3l48uut" path="res://scenes/water.tscn" id="1_hi4q1"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="2_q0b02"]
 [ext_resource type="PackedScene" uid="uid://bxcn0ue8jjo7v" path="res://scenes/Soap1.tscn" id="3_8bjni"]
+[ext_resource type="Resource" uid="uid://duhpt75q2lvbx" path="res://resources/p1_controls.tres" id="3_ofyco"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_b2xwy"]
 
 [node name="World" type="Node"]
@@ -15,6 +16,7 @@ shadow_enabled = true
 
 [node name="Player1" parent="." instance=ExtResource("2_q0b02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577929, 0)
+controls = ExtResource("3_ofyco")
 
 [node name="Player2" parent="." instance=ExtResource("2_q0b02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294564, 0.822679, -1.13296)

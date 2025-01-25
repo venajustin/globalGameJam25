@@ -11,3 +11,5 @@ extends Resource
 @export var look_left := "p1_look_left"
 @export var look_right := "p1_look_right"
 @export var jump := "p1_jump"
+@export var weapon_next := "p1_weapon_next"
+@export var weapon_prev := "p1_weapon_prev"

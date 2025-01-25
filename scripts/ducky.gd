@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
 @export var controls:Resource = preload("res://resources/p1_controls.tres")
+@export var weapons:Array[Resource] = Array[Resource]
+var curr_weapon:Resource = null
 
 @onready var cam_pivot := $camera_pivot
+@onready var local_mesh_pivot := $LocalMeshPivot
+@onready var bullet_spawn := $LocalMeshPivot/bullet_spawn
 
 const SPEED := 10.0 # max speed the engine can get us to
 const JUMP_VELOCITY := 4.5
@@ -11,11 +15,14 @@ const PLAYER_ACC := 3.0
 const MAX_SPEED := 1000 # max speed with boosts
 const TURN_SPEED := 1
 const CAM_SPEED := 3.0
+const AIR_SNAP := 15.0
 
 const LOG10 = log(10)
 
 var look_dir: Vector3 = Vector3(1, 1, 1);
 var turn_dir:float = 0;
+
+
 
 	
 func _physics_process(delta: float) -> void:
@@ -34,25 +41,14 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-		# global_rotate(Vector3(0, 1, 0), delta * .5 * Input.get_axis(controls.look_right, controls.look_left))
-		# rotate_object_local(Vector3(1, 0, 0), delta * -.5 * Input.get_axis(controls.look_up, controls.look_down))
-		#if Input.is_action_pressed("rotate_left"):
-			#global_rotate(Vector3(0, 1, 0), delta * .5 )
-				##look_dir = look_dir.rotated(Vector3(0, 1, 0), delta * .5 )
-		#if Input.is_action_pressed("rotate_right"):
-			#global_rotate(Vector3(0, 1, 0), delta * -.5 )
-			##look_dir = look_dir.rotated(Vector3(0, 1, 0), delta * -.5 )
-		#if Input.is_action_pressed("rotate_back"):
-			#rotate_object_local(Vector3(1, 0, 0), delta * .5 )
-			##look_dir = look_dir.rotated(Vector3(1, 0, 0), delta * .5 )
-		#if Input.is_action_pressed("rotate_forward"):
-			#rotate_object_local(Vector3(1, 0, 0), delta * -.5 )
-			##look_dir = look_dir.rotated(Vector3(1, 0, 0), delta * -.5 )
+		var desired_pivot: Vector3 = cam_pivot.rotation
+		rotation.y = rotate_toward(rotation.y, desired_pivot.y, delta * AIR_SNAP)
+		local_mesh_pivot.rotation.x = rotate_toward(local_mesh_pivot.rotation.x, desired_pivot.x, delta * AIR_SNAP)
 		
 	
 	else: 
 		
-		rotate_x(0)
+		local_mesh_pivot.rotation.x = 0
 		
 		
 		# Handle jump.
@@ -86,10 +82,10 @@ func _physics_process(delta: float) -> void:
 	
 	var turn_power := 0.0
 	if curr_speed > 1 or curr_speed < -1:
-		#turn_power = 1 - log(abs((curr_speed+.3)/4))/LOG10 + .5
+		#turn_power = 1 - log((abs(curr_speed)+.3)/4)/LOG10 + .5
 		turn_power = 1 - .4 * log(abs(curr_speed))/LOG10
 	else:
-		#turn_power = 1 + log(abs((curr_speed+.3)/4))/LOG10 + .5
+		# turn_power = 1 + log((abs(curr_speed)+.3)/4)/LOG10 + .5
 		turn_power = 1.5 + log(abs(curr_speed))/LOG10
 	if turn_power < 0:
 		turn_power = 0
