@@ -1,20 +1,23 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0 # max speed the engine can get us to
+const SPEED = 10.0 # max speed the engine can get us to
 const JUMP_VELOCITY = 4.5
 const WATER_DRAG = 1.0
 const PLAYER_ACC = 3.0
 const MAX_SPEED = 1000 # max speed with boosts
-const TURN_SPEED = 1.5
+const TURN_SPEED = 1
 
 const LOG10 = log(10)
 
 var look_dir: Vector3 = Vector3(1, 1, 1);
+var turn_dir:float = 0;
 
 func _physics_process(delta: float) -> void:
 	
-	
+	var turn_desired:float = 0
+	var curr_speed :=  Vector2(velocity.x, velocity.z).length()
+
 			
 		# Add the gravity.
 	if not is_on_floor():
@@ -35,56 +38,50 @@ func _physics_process(delta: float) -> void:
 		
 	
 	else: 
+		
+		rotate_x(0)
+		
+		
 		# Handle jump.
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
-		var turn_dir := Input.get_axis("turn_right", "turn_left")
-		var curr_speed :=  Vector2(velocity.x, velocity.z).length()
-		var turn_power := 0.0
-		if curr_speed > .56234 or curr_speed < -.56234:
-			turn_power = 1 - log(abs(curr_speed))/LOG10
-		else:
-			turn_power = 1.5 + log(abs(curr_speed))/LOG10
-		if turn_power < 0:
-			turn_power = 0
-		print("curr speed", curr_speed)
-		print("turn power", turn_power)
-		print("turn dir", turn_dir)
-		print()
+		turn_desired = Input.get_axis("turn_right", "turn_left")
 		
-	
 		if curr_speed > 0:
-			rotate_object_local(Vector3(0, 1, 0), delta * turn_dir * turn_power * TURN_SPEED)
-			velocity = velocity.rotated(Vector3(0, 1, 0),  delta * turn_dir * turn_power * TURN_SPEED)
+			turn_dir = move_toward(turn_dir, turn_desired, delta)
 		
 		
 		var drive_dir := Input.get_axis("move_forward", "move_back")
+		var local_z := (transform.basis * velocity).z
+		var movement_power = 0
+		if Input.is_action_pressed("move_forward"):
+			local_z = 1
+		if local_z > 0:
+			movement_power = 1
+		if local_z > 1:
+			movement_power = 0.3 * log(local_z)/LOG10
+		
 		if curr_speed < SPEED:
-			velocity.z = move_toward(velocity.z, MAX_SPEED, cos(rotation.y) * drive_dir * PLAYER_ACC * delta)
-			velocity.x = move_toward(velocity.x, MAX_SPEED, sin(rotation.y) * drive_dir * PLAYER_ACC * delta)
+			velocity.z = move_toward(velocity.z, MAX_SPEED, cos(rotation.y) * drive_dir * PLAYER_ACC * delta * movement_power)
+			velocity.x = move_toward(velocity.x, MAX_SPEED, sin(rotation.y) * drive_dir * PLAYER_ACC * delta * movement_power)
 		
 		
 		velocity.x = move_toward(velocity.x, 0, WATER_DRAG * delta)
 		velocity.z = move_toward(velocity.z, 0, WATER_DRAG * delta)
 		
-		## Get the input direction and handle the movement/deceleration.
-		## As good practice, you should replace UI actions with custom gameplay actions.
-		#var input_dir := Input.get_vector("turn_left", "turn_right", "move_forward", "move_back")
-		#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		#if direction:
-			#velocity.x = direction.x * SPEED
-			#velocity.z = direction.z * SPEED
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, SPEED)
-			#velocity.z = move_toward(velocity.z, 0, SPEED)
-			#
-			
-		## on floor, move like a boat
-		#var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		#if direction:
-			#
+	
+	var turn_power := 0.0
+	if curr_speed > 1 or curr_speed < -1:
+		turn_power = 1 - .4 * log(abs(curr_speed))/LOG10
+	else:
+		turn_power = 1.5 + log(abs(curr_speed))/LOG10
+	if turn_power < 0:
+		turn_power = 0
+		
+	
+	rotate_object_local(Vector3(0, 1, 0), delta * turn_dir * turn_power * TURN_SPEED)
+	velocity = velocity.rotated(Vector3(0, 1, 0),  delta * turn_dir * turn_power * TURN_SPEED)
 	
 	
 	
