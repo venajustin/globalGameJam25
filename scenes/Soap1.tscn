@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxcn0ue8jjo7v"]
+[gd_scene load_steps=5 format=3 uid="uid://bxcn0ue8jjo7v"]
 
-[ext_resource type="Shader" uid="uid://ciuumavbci1if" path="res://assets/models/Soap1.tres" id="1_bfu6r"]
 [ext_resource type="ArrayMesh" uid="uid://ceccw2tg5qa8q" path="res://assets/models/Soap1.obj" id="2_fg8de"]
 [ext_resource type="Shader" uid="uid://chrbk1bcdwg4x" path="res://assets/models/Soap2.tres" id="3_ygk6s"]
 

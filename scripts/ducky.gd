@@ -2,29 +2,40 @@ extends CharacterBody3D
 
 @export var controls:Resource = preload("res://resources/p1_controls.tres")
 
-const SPEED = 10.0 # max speed the engine can get us to
-const JUMP_VELOCITY = 4.5
-const WATER_DRAG = 1.0
-const PLAYER_ACC = 3.0
-const MAX_SPEED = 1000 # max speed with boosts
-const TURN_SPEED = 1
+@onready var cam_pivot := $camera_pivot
+
+const SPEED := 10.0 # max speed the engine can get us to
+const JUMP_VELOCITY := 4.5
+const WATER_DRAG := 1.0
+const PLAYER_ACC := 3.0
+const MAX_SPEED := 1000 # max speed with boosts
+const TURN_SPEED := 1
+const CAM_SPEED := 3.0
 
 const LOG10 = log(10)
 
 var look_dir: Vector3 = Vector3(1, 1, 1);
 var turn_dir:float = 0;
 
+	
 func _physics_process(delta: float) -> void:
 	
 	var turn_desired:float = 0
 	var curr_speed :=  Vector2(velocity.x, velocity.z).length()
 			
+			
+	var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
+	# var look_yaw:float = Input.get_axis(controls.look_right, controls.look_left)
+	cam_pivot.rotate(Vector3(0, 1, 0), look_input.x * delta * CAM_SPEED)
+	# var look_pitch:float = Input.get_axis(controls.look_up, controls.look_down)
+	cam_pivot.rotate_object_local(Vector3(1, 0, 0), look_input.y * delta * CAM_SPEED)
+	
 		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-		global_rotate(Vector3(0, 1, 0), delta * .5 * Input.get_axis(controls.look_right, controls.look_left))
-		rotate_object_local(Vector3(1, 0, 0), delta * -.5 * Input.get_axis(controls.look_up, controls.look_down))
+		# global_rotate(Vector3(0, 1, 0), delta * .5 * Input.get_axis(controls.look_right, controls.look_left))
+		# rotate_object_local(Vector3(1, 0, 0), delta * -.5 * Input.get_axis(controls.look_up, controls.look_down))
 		#if Input.is_action_pressed("rotate_left"):
 			#global_rotate(Vector3(0, 1, 0), delta * .5 )
 				##look_dir = look_dir.rotated(Vector3(0, 1, 0), delta * .5 )
@@ -59,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		var movement_power = 0
 		if Input.is_action_pressed(controls.move_forward):
 			local_z = 1
-		if local_z > 0:
+		if local_z >= 0:
 			movement_power = 1
 		if local_z > 1:
 			movement_power = 0.3 * log(local_z)/LOG10
@@ -75,8 +86,10 @@ func _physics_process(delta: float) -> void:
 	
 	var turn_power := 0.0
 	if curr_speed > 1 or curr_speed < -1:
+		#turn_power = 1 - log(abs((curr_speed+.3)/4))/LOG10 + .5
 		turn_power = 1 - .4 * log(abs(curr_speed))/LOG10
 	else:
+		#turn_power = 1 + log(abs((curr_speed+.3)/4))/LOG10 + .5
 		turn_power = 1.5 + log(abs(curr_speed))/LOG10
 	if turn_power < 0:
 		turn_power = 0
