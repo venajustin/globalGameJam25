@@ -1,0 +1,33 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8bbdjhplxr1t"]
+
+[ext_resource type="Shader" uid="uid://dwfqf3klk8pib" path="res://Shaders/Bathtub.tres" id="1_a2pyq"]
+[ext_resource type="ArrayMesh" uid="uid://bkao2hgoeok7m" path="res://assets/models/Bathtub.obj" id="2_qo0ly"]
+[ext_resource type="Shader" uid="uid://bmnd8i15pn2vc" path="res://Shaders/Faucet.tres" id="3_qpb3v"]
+[ext_resource type="ArrayMesh" uid="uid://bewllsnw4vwic" path="res://assets/models/Faucet.obj" id="3_uipq8"]
+[ext_resource type="Shader" uid="uid://dufbugi3hhvqv" path="res://Shaders/Towels.tres" id="4_d8m1e"]
+[ext_resource type="ArrayMesh" uid="uid://coycllbktht2o" path="res://assets/models/Towels.obj" id="5_jwmv4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vevof"]
+render_priority = 0
+shader = ExtResource("1_a2pyq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkr3v"]
+render_priority = 0
+shader = ExtResource("3_qpb3v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4sg1"]
+render_priority = 0
+shader = ExtResource("4_d8m1e")
+
+[node name="Bathtub" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_vevof")
+mesh = ExtResource("2_qo0ly")
+
+[node name="Faucet" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_bkr3v")
+mesh = ExtResource("3_uipq8")
+
+[node name="Towels" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147705, 0.590195, -0.0177307)
+material_override = SubResource("ShaderMaterial_c4sg1")
+mesh = ExtResource("5_jwmv4")
