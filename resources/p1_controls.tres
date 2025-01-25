@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerControls" load_steps=2 format=3 uid="uid://duhpt75q2lvbx"]
+
+[ext_resource type="Script" path="res://scripts/player_controls.gd" id="1_f66fj"]
+
+[resource]
+script = ExtResource("1_f66fj")
+player_index = 0
+move_forward = "p1_move_forward"
+move_backward = "p1_move_backward"
+turn_left = "p1_turn_left"
+turn_right = "p1_turn_right"
+look_up = "p1_look_up"
+look_down = "p1_look_down"
+look_left = "p1_look_left"
+look_right = "p1_look_right"
+jump = "p1_jump"

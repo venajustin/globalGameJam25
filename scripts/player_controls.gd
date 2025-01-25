@@ -1,11 +1,13 @@
-extends Node
+class_name PlayerControls
+extends Resource
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export var player_index := 0
+@export var move_forward := "p1_move_forward"
+@export var move_backward := "p1_move_backward"
+@export var turn_left := "p1_turn_left"
+@export var turn_right := "p1_turn_right"
+@export var look_up := "p1_look_up"
+@export var look_down := "p1_look_down"
+@export var look_left := "p1_look_left"
+@export var look_right := "p1_look_right"
+@export var jump := "p1_jump"
