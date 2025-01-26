@@ -22,7 +22,7 @@ enum FTYPE {
 
 
 
-func fire_held(delta:float, duck_velocity:Vector3, start_position:Node3D, world:Node3D, up_dir:Vector3, source:Node, last_fire:Resource) -> void:
+func fire_held(delta:float, duck_velocity:Vector3, start_position:Node3D, world:Node3D, up_dir:Vector3, source:Node, last_fire:Resource, audio_player:AudioStreamPlayer) -> void:
 	
 	if last_fire.time > fire_rate:
 		last_fire.time = 0
@@ -32,6 +32,7 @@ func fire_held(delta:float, duck_velocity:Vector3, start_position:Node3D, world:
 		spawned_bullet.creator = source
 		spawned_bullet.position = start_position.global_position
 		spawned_bullet.direction = start_position.get_child(0).global_position - start_position.global_position		
+		audio_player.play()
 		
 		if fire_type == FTYPE.MACHINEGUN:
 			var perp_vector = spawned_bullet.direction.cross(up_dir).normalized()
@@ -48,7 +49,6 @@ func fire_held(delta:float, duck_velocity:Vector3, start_position:Node3D, world:
 		
 		if fire_type == FTYPE.SHOTGUN:
 			for i in range(20) :
-				
 				var sub_bullet = bullet.instantiate()
 				
 				sub_bullet.creator = source

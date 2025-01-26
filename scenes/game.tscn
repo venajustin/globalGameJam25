@@ -55,9 +55,6 @@ offset_right = 1920.0
 [node name="Label" parent="Player2Hud/Control/VBoxContainer" index="0"]
 text = "PLAYER 2"
 
-[node name="TextureProgressBar" parent="Player2Hud/Control" index="1"]
-step = 1.0
-
 [node name="GameOver" type="Panel" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 40.0

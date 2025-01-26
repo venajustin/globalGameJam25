@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2g4r8qbfug68"]
+[gd_scene load_steps=40 format=3 uid="uid://2g4r8qbfug68"]
 
 [ext_resource type="Script" path="res://scripts/ducky.gd" id="1_7kdm6"]
 [ext_resource type="PackedScene" uid="uid://cfpgwm3y0xf8j" path="res://scenes/bullet.tscn" id="2_q64pj"]
@@ -9,10 +9,29 @@
 [ext_resource type="PackedScene" uid="uid://con23fp5p576c" path="res://scenes/weapon_models/shotgun_ducky_static_textured.tscn" id="6_0hmjv"]
 [ext_resource type="Texture2D" uid="uid://bc7v5almyh8y4" path="res://assets/Icons/shotgun_duck.png" id="6_ml1w1"]
 [ext_resource type="Texture2D" uid="uid://bdkqyqucsfe5e" path="res://assets/Icons/sniper_duck.png" id="8_dd5ia"]
-[ext_resource type="Shader" path="res://scenes/ducky_flash.gdshader" id="10_72o4i"]
 [ext_resource type="Resource" uid="uid://8cephf6ruf4w" path="res://resources/last_fire.tres" id="10_xskbl"]
+[ext_resource type="Shader" uid="uid://w2gut2kkrijp" path="res://Shaders/ducky_flash.tres" id="11_44gwy"]
+[ext_resource type="AudioStream" uid="uid://dho2rglx1n0sy" path="res://assets/Sound Effects/cartoon_duck_quack_whistle_single_001.mp3" id="12_dvnf0"]
+[ext_resource type="AudioStream" uid="uid://ic8a4r20a3lr" path="res://assets/Sound Effects/SoundsCrate-Stylized_Bubble_Pop_4.mp3" id="12_hkyrw"]
+[ext_resource type="AudioStream" uid="uid://cpfyns8k6ith1" path="res://assets/Sound Effects/animal_bird_duck_quack_002.mp3" id="13_2cmgw"]
+[ext_resource type="AudioStream" uid="uid://dssqk0wfdel0p" path="res://assets/Sound Effects/bubbles/pop_bubble_-01.mp3" id="13_aonhd"]
+[ext_resource type="AudioStream" uid="uid://837i8r3wveb" path="res://assets/Sound Effects/bubbles/pop_bubble_-10.mp3" id="14_c7njf"]
+[ext_resource type="AudioStream" uid="uid://cmdx3tb7us7vr" path="res://assets/Sound Effects/cartoon_duck_quack_whistle_single_003.mp3" id="14_mvi52"]
+[ext_resource type="AudioStream" uid="uid://bvf5fdvu0d8c4" path="res://assets/Sound Effects/animal_bird_duck_quack_001.mp3" id="15_ixkd4"]
+[ext_resource type="AudioStream" uid="uid://iijr4r7har68" path="res://assets/Sound Effects/bubbles/pop_bubble_-11.mp3" id="15_ra5fw"]
+[ext_resource type="AudioStream" uid="uid://14gf1bqmbpt1" path="res://assets/Sound Effects/bubbles/pop_bubble_-12.mp3" id="16_xk0q3"]
+[ext_resource type="AudioStream" uid="uid://kpvk0wiwg6b8" path="res://assets/Sound Effects/bubbles/pop_bubble_-13.mp3" id="17_08oad"]
+[ext_resource type="AudioStream" uid="uid://h2cqdeuiis2o" path="res://assets/Sound Effects/bubbles/pop_bubble_-14.mp3" id="18_rya1c"]
+[ext_resource type="AudioStream" uid="uid://bhemy31jb3we2" path="res://assets/Sound Effects/bubbles/pop_bubble_-02.mp3" id="19_wavn0"]
+[ext_resource type="AudioStream" uid="uid://17364aou5w8r" path="res://assets/Sound Effects/bubbles/pop_bubble_-03.mp3" id="20_f7c62"]
+[ext_resource type="AudioStream" uid="uid://cs3ipk7bqpuqa" path="res://assets/Sound Effects/bubbles/pop_bubble_-04.mp3" id="21_ob600"]
+[ext_resource type="AudioStream" uid="uid://c3dbaqtrm8lgw" path="res://assets/Sound Effects/bubbles/pop_bubble_-05.mp3" id="22_05vwl"]
+[ext_resource type="AudioStream" uid="uid://757nblbgjoaw" path="res://assets/Sound Effects/bubbles/pop_bubble_-06.mp3" id="23_b16e3"]
+[ext_resource type="AudioStream" uid="uid://ch6mkccehuwjm" path="res://assets/Sound Effects/bubbles/pop_bubble_-07.mp3" id="24_cu405"]
+[ext_resource type="AudioStream" uid="uid://b6jbs4nmlxnsm" path="res://assets/Sound Effects/bubbles/pop_bubble_-08.mp3" id="25_56hdc"]
+[ext_resource type="AudioStream" uid="uid://bsxqg74fvk0sc" path="res://assets/Sound Effects/bubbles/pop_bubble_-09.mp3" id="26_txw0y"]
 
-[sub_resource type="Resource" id="Resource_k6xhv"]
+[sub_resource type="Resource" id="Resource_o0mj7"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("3_eiruf")
@@ -25,7 +44,7 @@ travel_distance = 150.0
 bullet_drop = 2.0
 bullet_speed = 30.0
 
-[sub_resource type="Resource" id="Resource_qdapf"]
+[sub_resource type="Resource" id="Resource_lqjci"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("6_0hmjv")
@@ -38,7 +57,7 @@ travel_distance = 150.0
 bullet_drop = 2.0
 bullet_speed = 30.0
 
-[sub_resource type="Resource" id="Resource_rixed"]
+[sub_resource type="Resource" id="Resource_pfxom"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("5_2gxea")
@@ -55,9 +74,11 @@ bullet_speed = 40.0
 radius = 7.71667
 height = 23.8093
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_48sm3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c38db"]
 render_priority = 0
-shader = ExtResource("10_72o4i")
+shader = ExtResource("11_44gwy")
+shader_parameter/Color = Color(0.821398, 0, 0.392577, 1)
+shader_parameter/Alpha = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utv2e"]
 radius = 0.399605
@@ -67,10 +88,36 @@ height = 1.34636
 radius = 0.446247
 height = 1.51501
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_57qhi"]
+streams_count = 4
+stream_0/stream = ExtResource("15_ixkd4")
+stream_1/stream = ExtResource("13_2cmgw")
+stream_2/stream = ExtResource("12_dvnf0")
+stream_3/stream = ExtResource("14_mvi52")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0xydx"]
+random_pitch = 1.6
+streams_count = 15
+stream_0/stream = ExtResource("12_hkyrw")
+stream_1/stream = ExtResource("13_aonhd")
+stream_2/stream = ExtResource("19_wavn0")
+stream_3/stream = ExtResource("20_f7c62")
+stream_4/stream = ExtResource("21_ob600")
+stream_5/stream = ExtResource("22_05vwl")
+stream_6/stream = ExtResource("23_b16e3")
+stream_7/stream = ExtResource("24_cu405")
+stream_8/stream = ExtResource("25_56hdc")
+stream_9/stream = ExtResource("26_txw0y")
+stream_10/stream = ExtResource("14_c7njf")
+stream_11/stream = ExtResource("15_ra5fw")
+stream_12/stream = ExtResource("16_xk0q3")
+stream_13/stream = ExtResource("17_08oad")
+stream_14/stream = ExtResource("18_rya1c")
+
 [node name="Ducky" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_7kdm6")
-weapons = Array[Resource]([SubResource("Resource_k6xhv"), SubResource("Resource_qdapf"), SubResource("Resource_rixed")])
+weapons = Array[Resource]([SubResource("Resource_o0mj7"), SubResource("Resource_lqjci"), SubResource("Resource_pfxom")])
 gun_local_last_fire = ExtResource("10_xskbl")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -81,7 +128,7 @@ shape = SubResource("CapsuleShape3D_d3q2q")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.18203e-08, 0, -0.0105894)
 
 [node name="Normal_Ducky_Textured" parent="LocalMeshPivot" instance=ExtResource("3_eiruf")]
-material_overlay = SubResource("ShaderMaterial_48sm3")
+material_overlay = SubResource("ShaderMaterial_c38db")
 
 [node name="bullet_spawn" type="Marker3D" parent="LocalMeshPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94708e-07, 0.953839, 0.592828)
@@ -111,6 +158,15 @@ transform = Transform3D(1, 0, 0, 0, 0.992446, 0.122683, 0, -0.122683, 0.992446, 
 transform = Transform3D(-0.561376, 0, 0.827561, 0, 1, 0, -0.827561, 0, -0.561376, 2.74472e-08, 0.6272, -0.0485265)
 remote_path = NodePath("../camera_pivot")
 update_rotation = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_57qhi")
+bus = &"ducks"
+
+[node name="GunSounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_0xydx")
+volume_db = -1.0
+bus = &"guns"
 
 [connection signal="area_entered" from="LocalMeshPivot/Hitbox" to="." method="_on_hitbox_enter"]
 [connection signal="body_entered" from="LocalMeshPivot/Hitbox" to="." method="_on_hitbox_body_entered"]

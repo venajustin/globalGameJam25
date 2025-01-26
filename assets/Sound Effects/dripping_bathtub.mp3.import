@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qefmnl35mln3"
+path="res://.godot/imported/dripping_bathtub.mp3-0d09805bff8be84eb63146b637892645.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/dripping_bathtub.mp3"
+dest_files=["res://.godot/imported/dripping_bathtub.mp3-0d09805bff8be84eb63146b637892645.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

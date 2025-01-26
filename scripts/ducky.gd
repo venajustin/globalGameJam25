@@ -12,6 +12,11 @@ var curr_weapon_i:int = 0
 
 @export var gun_local_last_fire:Resource
 
+@onready var hit_sound:AudioStreamPlayer = $AudioStreamPlayer
+@onready var fire_sound:AudioStreamPlayer = $GunSounds
+
+@onready var hit_effect_shader:ShaderMaterial = $LocalMeshPivot/Normal_Ducky_Textured.material_overlay
+
 signal damage_taken
 signal swap_weapon
 signal register_weapon
@@ -40,11 +45,14 @@ var tilt_ammount:float = 0
 var input_direction:Vector2
 const TILT_SNAP := 5.0
 
+var hit_effect_time := 0.0
+
 func _ready() -> void:
 	if weapons:
 		if curr_weapon_i < weapons.size():
 			curr_weapon = weapons[curr_weapon_i]
 			swap_mesh_to_weapon()
+	hit_effect_shader.set_shader_parameter("Alpha", 0)
 	
 
 func register_hud() -> void:
@@ -67,7 +75,6 @@ func _physics_process(delta: float) -> void:
 	
 	var turn_desired:float = 0
 	var curr_speed :=  Vector2(velocity.x, velocity.z).length()
-			
 	
 	if Input.is_action_just_pressed(controls.weapon_next):
 		if curr_weapon_i + 1 < weapons.size():
@@ -87,7 +94,8 @@ func _physics_process(delta: float) -> void:
 	last_fire += delta
 	if Input.is_action_pressed(controls.fire):
 		var downwards_start := global_transform.basis.y * -1.0
-		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref, global_transform.basis.y, self, gun_local_last_fire)
+		# hit_sound.play()
+		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref, global_transform.basis.y, self, gun_local_last_fire, fire_sound)
 		last_fire = 0
 	
 	var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
@@ -171,6 +179,12 @@ func _physics_process(delta: float) -> void:
 	#local_mesh_pivot.transform = local_mesh_pivot.transform.rotated(transform.basis.x, input_direction.y * tilt_ammount )
 
 	move_and_slide()
+	
+	if hit_effect_time > 0:
+		hit_effect_time -= delta
+	if hit_effect_time <= 0:
+		hit_effect_shader.set_shader_parameter("Alpha", 0)
+	
 
 func _on_hitbox_enter(area: Area3D) -> void:
 	if area is Bullet:
@@ -181,4 +195,8 @@ func _on_hitbox_enter(area: Area3D) -> void:
 				health = 0
 				died.emit()
 			area.queue_free()
+			if not hit_sound.playing:
+				hit_sound.play()
+			hit_effect_shader.set_shader_parameter("Alpha", .6)
+			hit_effect_time = .2
 			damage_taken.emit(health)

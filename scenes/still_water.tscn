@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddx7vyhi40k4t"]
+[gd_scene load_steps=8 format=3 uid="uid://ddx7vyhi40k4t"]
 
 [ext_resource type="Shader" uid="uid://dp0gktttkox6n" path="res://Shaders/Water.tres" id="1_mfh2p"]
+[ext_resource type="Script" path="res://scripts/splasher.gd" id="2_d6kfh"]
+[ext_resource type="PackedScene" uid="uid://c5koabv4o2v7x" path="res://scenes/splash_player.tscn" id="3_x0c0j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yajpn"]
 render_priority = 0
@@ -15,6 +17,9 @@ subdivide_depth = 30
 [sub_resource type="BoxShape3D" id="BoxShape3D_p57i1"]
 size = Vector3(58.4963, 0.75293, 29.248)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0kivy"]
+size = Vector3(70.2006, 1, 34.6506)
+
 [node name="WaterBody" type="StaticBody3D"]
 
 [node name="Water" type="MeshInstance3D" parent="."]
@@ -25,3 +30,13 @@ mesh = SubResource("PlaneMesh_6clhi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.18746, 0, 0, 0, 1.18746, 0, 0, 0, 1.18746, -16.3451, -1.41828, -0.014019)
 shape = SubResource("BoxShape3D_p57i1")
+
+[node name="Splasher" type="Area3D" parent="."]
+script = ExtResource("2_d6kfh")
+splash_sound = ExtResource("3_x0c0j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Splasher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9493, -0.97157, 0.0338135)
+shape = SubResource("BoxShape3D_0kivy")
+
+[connection signal="body_entered" from="Splasher" to="Splasher" method="_on_body_entered"]

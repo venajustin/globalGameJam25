@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kpvk0wiwg6b8"
+path="res://.godot/imported/pop_bubble_-13.mp3-88b5fe82eed03639654fd8d60655675f.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/bubbles/pop_bubble_-13.mp3"
+dest_files=["res://.godot/imported/pop_bubble_-13.mp3-88b5fe82eed03639654fd8d60655675f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

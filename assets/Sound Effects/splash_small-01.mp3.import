@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bacdnnqvyh5cp"
+path="res://.godot/imported/splash_small-01.mp3-ed455b26d18ac98012223c6a518594b3.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/splash_small-01.mp3"
+dest_files=["res://.godot/imported/splash_small-01.mp3-ed455b26d18ac98012223c6a518594b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
