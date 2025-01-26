@@ -16,7 +16,7 @@ constant = 0.8
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_6gmt8"]
 
 [sub_resource type="VisualShaderNodeProximityFade" id="VisualShaderNodeProximityFade_gjtyh"]
-default_input_values = [0, 5.0]
+default_input_values = [0, 2.0]
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_t1uui"]
 function = 31
@@ -197,7 +197,7 @@ void vertex() {
 void fragment() {
 	float n_out14p0;
 // ProximityFade:14
-	float n_in14p0 = 5.00000;
+	float n_in14p0 = 2.00000;
 	{
 		float __depth_tex = texture(depth_tex_frg_14, SCREEN_UV).r;
 		vec4 __depth_world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, __depth_tex, 1.0);
@@ -339,14 +339,14 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-762.723, -456.845)
+graph_offset = Vector2(-433.857, -70.9702)
 nodes/vertex/0/position = Vector2(600, 180)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_0fypa")
 nodes/vertex/2/position = Vector2(-180, 20)
 nodes/vertex/3/node = SubResource("VisualShaderNodeInput_e7oxe")
-nodes/vertex/3/position = Vector2(-700, 380)
+nodes/vertex/3/position = Vector2(-780, 380)
 nodes/vertex/4/node = SubResource("VisualShaderNodeUVFunc_qbpuv")
-nodes/vertex/4/position = Vector2(-400, 220)
+nodes/vertex/4/position = Vector2(-460, 180)
 nodes/vertex/5/node = SubResource("VisualShaderNodeInput_p35cx")
 nodes/vertex/5/position = Vector2(-100, 580)
 nodes/vertex/6/node = SubResource("VisualShaderNodeInput_xh4cp")
@@ -356,7 +356,7 @@ nodes/vertex/7/position = Vector2(360, 120)
 nodes/vertex/8/node = SubResource("VisualShaderNodeVectorOp_p6u4g")
 nodes/vertex/8/position = Vector2(-20, 300)
 nodes/vertex/connections = PackedInt32Array(4, 0, 2, 0, 3, 0, 4, 2, 2, 0, 7, 0, 5, 0, 7, 2, 7, 0, 0, 0, 6, 0, 8, 0, 8, 0, 7, 1)
-nodes/fragment/0/position = Vector2(700, 40)
+nodes/fragment/0/position = Vector2(1340, -60)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_pomxu")
 nodes/fragment/2/position = Vector2(-80, 40)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_qfd6w")

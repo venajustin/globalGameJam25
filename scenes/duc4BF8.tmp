@@ -15,11 +15,11 @@ script = ExtResource("1_7kdm6")
 weapons = Array[Resource]([ExtResource("2_ignfn"), ExtResource("3_hr4pd")])
 
 [node name="Collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0614221, -7.13081e-10, 1.23695e-16, -5.26949e-17, -2.68485e-09, -0.0614221, 7.13081e-10, 0.0614221, -2.68485e-09, -1.68732e-09, 0.451582, -0.0280118)
+transform = Transform3D(0.0614221, -7.13081e-10, 1.23695e-16, -5.26949e-17, -2.68485e-09, -0.0614221, 7.13081e-10, 0.0614221, -2.68485e-09, -5.07885e-08, 0.451582, -0.589664)
 shape = SubResource("CapsuleShape3D_d3q2q")
 
 [node name="LocalMeshPivot" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.18203e-08, 0, -0.0105894)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.72809e-08, 0, -0.572242)
 
 [node name="Normal_Ducky_Textured" parent="LocalMeshPivot" instance=ExtResource("3_eiruf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40343e-05, 0.00676405, -0.0074172)
@@ -31,13 +31,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94708e-07, 0.953839, 0.5928
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0517e-07, 0, 0.601505)
 
 [node name="camera_pivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -3.16895e-08, 0.6272, 0.0485265)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -3.16895e-08, 0.6272, 0.610179)
 top_level = true
 
 [node name="camera_point" type="Marker3D" parent="camera_pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.992446, 0.122683, 0, -0.122683, 0.992446, -2.19786e-07, 1.88487, 4.05367)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
-transform = Transform3D(-0.561376, 0, 0.827561, 0, 1, 0, -0.827561, 0, -0.561376, 2.74472e-08, 0.6272, -0.0485265)
+transform = Transform3D(-0.561376, 0, 0.827561, 0, 1, 0, -0.827561, 0, -0.561376, -2.1654e-08, 0.6272, -0.610179)
 remote_path = NodePath("../camera_pivot")
 update_rotation = false
