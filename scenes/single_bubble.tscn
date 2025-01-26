@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://crr5pwifdjo73"]
+
+[ext_resource type="Shader" uid="uid://ciuumavbci1if" path="res://Shaders/Soap1.tres" id="1_l07qs"]
+[ext_resource type="ArrayMesh" uid="uid://cidogm1pc7kg0" path="res://assets/models/Single_Surface_Bubble.obj" id="2_capeu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqp7d"]
+render_priority = 0
+shader = ExtResource("1_l07qs")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Amount = 32.0
+shader_parameter/Sharpness = 16.0
+
+[node name="Single_Bubble" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_hqp7d")
+mesh = ExtResource("2_capeu")

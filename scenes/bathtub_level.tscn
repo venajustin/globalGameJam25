@@ -1,27 +1,47 @@
-[gd_scene load_steps=10 format=3 uid="uid://12m6mey3y65b"]
+[gd_scene load_steps=11 format=3 uid="uid://12m6mey3y65b"]
 
-[ext_resource type="PackedScene" uid="uid://bak5lkmnkf5hu" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="Texture2D" uid="uid://cxajwnb7cm56p" path="res://assets/Textures/en_suite_2k.hdr" id="1_hx02n"]
+[ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="2_pbqep"]
+[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
 [ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_58n0j"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_386ux"]
+panorama = ExtResource("1_hx02n")
 
 [sub_resource type="Sky" id="Sky_rebr0"]
-sky_material = SubResource("ProceduralSkyMaterial_58n0j")
+sky_material = SubResource("PanoramaSkyMaterial_386ux")
 
 [sub_resource type="Environment" id="Environment_fmoc7"]
 background_mode = 2
 sky = SubResource("Sky_rebr0")
+sky_custom_fov = 90.0
+sky_rotation = Vector3(0, 0.785398, 0)
 tonemap_mode = 2
+tonemap_exposure = 0.76
+ssao_enabled = true
+ssao_radius = 0.77
+ssao_intensity = 7.41
+ssao_detail = 1.9
+ssil_radius = 4.29
+ssil_intensity = 0.0
 glow_enabled = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lhx1t"]
-size = Vector3(1.11218, 1, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_tekgr"]
+glow_normalized = true
+fog_mode = 1
+fog_light_color = Color(0.878119, 0.88056, 0.855288, 1)
+fog_light_energy = 1.24
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_emission = Color(0.878056, 0.812086, 0.721236, 1)
+volumetric_fog_emission_energy = 0.6
+volumetric_fog_gi_inject = 0.78
+volumetric_fog_anisotropy = -0.16
+volumetric_fog_length = 48.94
+volumetric_fog_ambient_inject = 0.57
+adjustment_enabled = true
 
 [node name="World" type="Node3D"]
 
@@ -29,47 +49,59 @@ size = Vector3(1.11218, 1, 1)
 environment = SubResource("Environment_fmoc7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.0500893, 0.22203, 0.973752, 0.186781, -0.955692, 0.22752, 0.981124, 0.193275, 0.00639891, 0.867675, 6.77088, 0)
 shadow_enabled = true
 
 [node name="Bathtub" parent="." instance=ExtResource("1_7lmtm")]
 transform = Transform3D(0.115405, 0, 0, 0, 0.115405, 0, 0, 0, 0.115405, -12.9265, 1.09308, 0)
 
+[node name="Soap1" parent="Bathtub" instance=ExtResource("2_pbqep")]
+transform = Transform3D(20.6722, 0, 0, 0, 20.6722, 0, 0, 0, 20.6722, 84.0136, -18.1999, 0)
+
+[node name="Soap2" parent="Bathtub" instance=ExtResource("2_pbqep")]
+transform = Transform3D(-19.7554, 0, -0.795533, 0, 19.7714, 0, 0.795533, 0, -19.7554, -140.895, -17.8767, 0)
+
+[node name="Node3D" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(10.1501, -0.838177, 14.1316, 2.54171, 17.214, -0.804589, -13.9264, 2.53083, 10.1528, 211.678, -18.1368, -99.1394)
+
+[node name="Node3D5" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(1.68122, 0.473312, 15.4374, 4.49215, 14.8423, -0.944287, -14.7769, 4.56586, 1.4693, 104.116, -26.9291, -118.877)
+
+[node name="Node3D9" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(13.8726, -4.47695, 2.21555, 4.2141, 15.2658, -1.08256, -1.48382, 1.49921, 17.6392, 259.518, -26.9291, -13.0947)
+
+[node name="Node3D10" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(13.8726, -4.47695, 2.21555, 4.2141, 15.2658, -1.08256, -1.48382, 1.49921, 17.6392, 258.291, -22.8368, 63.1455)
+
+[node name="Node3D11" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(13.8726, -4.47695, 2.21555, 4.2141, 15.2658, -1.08256, -1.48382, 1.49921, 17.6392, -314.928, -26.9291, -13.0947)
+
+[node name="Node3D12" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(13.8726, -4.47695, 2.21555, 4.2141, 15.2658, -1.08256, -1.48382, 1.49921, 17.6392, -316.155, -22.8368, 63.1455)
+
+[node name="Node3D6" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-0.181518, -1.09164, -13.5821, -6.73433, 11.8156, -0.859659, 11.8454, 6.70064, -0.696859, -179.083, -29.2791, -118.877)
+
+[node name="Node3D7" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-2.88116, 0.391829, 13.4231, -5.9562, 12.267, -1.63653, -12.0357, -6.1645, -2.40341, 125.779, -26.4459, 122.509)
+
+[node name="Node3D8" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(0.247371, 1.52962, -13.5387, 2.1864, 13.361, 1.54949, 13.4483, -2.20035, -0.00287795, -154.41, -20.6946, 133.174)
+
+[node name="Node3D2" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-4.9895, 1.49291, 16.1785, 3.82563, 16.5563, -0.347938, -15.7905, 3.53946, -5.19643, -253.17, -18.1368, -106.042)
+
+[node name="Node3D3" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-9.07693, 0.716993, -13.3343, 2.35599, 15.9562, -0.7458, 13.144, -2.36492, -9.0746, -253.182, -18.1368, 119.122)
+
+[node name="Node3D4" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(5.00056, -1.46824, -14.883, 3.54944, 15.3611, -0.322819, 14.5279, -3.24762, 5.20164, 211.69, -13.1762, 114.194)
+
 [node name="StaticBody3D" parent="." instance=ExtResource("3_s86al")]
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(2.96473, -2.9576, 0, 2.9576, 2.96473, 0, 0, 0, 4.18772, 0, -1.44313, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("PrismMesh_tekgr")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(-2.81042, 2.80366, 1.33343, 2.9576, 2.96473, 0, -0.94401, 0.941739, -3.96976, -38.9839, -1.44313, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("PrismMesh_tekgr")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.755526, 0.753709, 4.04946, 2.9576, 2.96473, 1.94148e-08, -2.86685, 2.85995, -1.06719, -18.4305, -1.29228, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
-mesh = SubResource("PrismMesh_tekgr")
-
 [node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 5.92821)
+transform = Transform3D(-0.000104681, 0, 1, 0, 1, 0, -1, 0, -0.000104681, 8.461, 0, 1.59676)
 
 [node name="Player2" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -5.54688)
+transform = Transform3D(0.0202618, 0, -0.999795, 0, 1, 0, 0.999795, 0, 0.0202618, -42.0443, 0, 0.35003)
 controls = ExtResource("4_en57g")

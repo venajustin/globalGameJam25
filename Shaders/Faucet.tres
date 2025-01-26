@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://bfikc5otu8ynt"]
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://bmnd8i15pn2vc"]
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_2bl68"]
 constant = Color(1, 0.8875, 0.25, 1)
@@ -44,7 +44,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-134.248, 59.8988)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_2bl68")
 nodes/fragment/2/position = Vector2(140, 160)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_pk014")
