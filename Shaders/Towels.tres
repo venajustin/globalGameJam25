@@ -4,7 +4,7 @@
 constant = Color(0.254539, 0.13315, 0.075023, 1)
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2aywh"]
-constant = 1.0
+constant = 5.0
 
 [resource]
 code = "shader_type spatial;
@@ -18,19 +18,15 @@ void fragment() {
 	vec4 n_out2p0 = vec4(0.254539, 0.133150, 0.075023, 1.000000);
 
 
-// FloatConstant:3
-	float n_out3p0 = 1.000000;
-
-
 // Output:0
 	ALBEDO = vec3(n_out2p0.xyz);
-	ROUGHNESS = n_out3p0;
 
 
 }
 "
+graph_offset = Vector2(-83.5056, 88.4658)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_8rnft")
 nodes/fragment/2/position = Vector2(160, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_2aywh")
 nodes/fragment/3/position = Vector2(160, 240)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 3)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
