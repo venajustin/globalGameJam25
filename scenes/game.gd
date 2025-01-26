@@ -21,3 +21,7 @@ func _ready() -> void:
 		var remote_transform := RemoteTransform3D.new()
 		remote_transform.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transform)
+
+func _process(_delta:float) -> void:
+	if Input.is_action_pressed("reset"):
+		get_tree().reload_current_scene()

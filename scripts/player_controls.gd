@@ -14,3 +14,5 @@ extends Resource
 @export var weapon_next := "p1_weapon_next"
 @export var weapon_prev := "p1_weapon_prev"
 @export var fire := "p1_fire"
+@export var scope := "p1_scope"
+@export var boost := "p1_boost"

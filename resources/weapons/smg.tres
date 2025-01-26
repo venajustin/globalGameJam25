@@ -8,6 +8,7 @@
 script = ExtResource("2_k4q6u")
 mesh_scene = ExtResource("1_qgmuc")
 bullet = ExtResource("1_p6lb1")
+fire_type = 1
 fire_rate = 0.05
 damage = 10.0
 travel_distance = 150.0

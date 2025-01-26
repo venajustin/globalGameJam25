@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://nw0fea777ewm"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_c6fns"]
+[ext_resource type="PackedScene" uid="uid://12m6mey3y65b" path="res://scenes/bathtub_level.tscn" id="2_3woku"]
+[ext_resource type="Texture2D" uid="uid://b01ryxtdt0glq" path="res://assets/Textures/Sniper_Decal.png" id="3_qr20o"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_c6fns")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
+
+[node name="World" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_3woku")]
+
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+current = true
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 958.0
+offset_right = 962.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 352.0
+offset_top = 412.0
+offset_right = 608.0
+offset_bottom = 668.0
+texture = ExtResource("3_qr20o")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 1312.0
+offset_top = 412.0
+offset_right = 1568.0
+offset_bottom = 668.0
+texture = ExtResource("3_qr20o")
