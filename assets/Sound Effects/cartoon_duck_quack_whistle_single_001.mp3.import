@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dho2rglx1n0sy"
+path="res://.godot/imported/cartoon_duck_quack_whistle_single_001.mp3-20a4558b470cc518c3cd132091605941.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/cartoon_duck_quack_whistle_single_001.mp3"
+dest_files=["res://.godot/imported/cartoon_duck_quack_whistle_single_001.mp3-20a4558b470cc518c3cd132091605941.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

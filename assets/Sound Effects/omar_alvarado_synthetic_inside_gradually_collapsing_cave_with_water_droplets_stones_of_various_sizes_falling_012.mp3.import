@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dk500g4s00wit"
+path="res://.godot/imported/omar_alvarado_synthetic_inside_gradually_collapsing_cave_with_water_droplets_stones_of_various_sizes_falling_012.mp3-104de5e7c387c3ba03a72c94b1f3df98.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/omar_alvarado_synthetic_inside_gradually_collapsing_cave_with_water_droplets_stones_of_various_sizes_falling_012.mp3"
+dest_files=["res://.godot/imported/omar_alvarado_synthetic_inside_gradually_collapsing_cave_with_water_droplets_stones_of_various_sizes_falling_012.mp3-104de5e7c387c3ba03a72c94b1f3df98.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

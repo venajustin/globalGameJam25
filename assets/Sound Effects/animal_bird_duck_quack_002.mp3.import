@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpfyns8k6ith1"
+path="res://.godot/imported/animal_bird_duck_quack_002.mp3-127729d0aa62f8d60e7314d9eec3f751.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/animal_bird_duck_quack_002.mp3"
+dest_files=["res://.godot/imported/animal_bird_duck_quack_002.mp3-127729d0aa62f8d60e7314d9eec3f751.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
