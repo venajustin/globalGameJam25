@@ -1,54 +1,75 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0oh8evcrqh7l"]
+[gd_scene load_steps=10 format=3 uid="uid://12m6mey3y65b"]
 
-[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
-[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="2_b02fj"]
-[ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="3_8tn5a"]
+[ext_resource type="PackedScene" uid="uid://bak5lkmnkf5hu" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
-[ext_resource type="PackedScene" uid="uid://cmdyx0quyyiia" path="res://scenes/still_water.tscn" id="3_s86al"]
+[ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ieobq"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_58n0j"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jyfe2"]
+[sub_resource type="Sky" id="Sky_rebr0"]
+sky_material = SubResource("ProceduralSkyMaterial_58n0j")
+
+[sub_resource type="Environment" id="Environment_fmoc7"]
+background_mode = 2
+sky = SubResource("Sky_rebr0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhx1t"]
+size = Vector3(1.11218, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_tekgr"]
 
 [node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fmoc7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Bathtub" parent="." instance=ExtResource("1_7lmtm")]
 transform = Transform3D(0.115405, 0, 0, 0, 0.115405, 0, 0, 0, 0.115405, -12.9265, 1.09308, 0)
 
-[node name="Soap4" parent="Bathtub" instance=ExtResource("2_b02fj")]
-transform = Transform3D(1.05051, 0.849222, -15.5285, -3.16146, 15.2505, 0.620147, 15.2269, 3.10777, 1.20007, -236.838, -14.2889, -120.34)
-
-[node name="Soap6" parent="Bathtub" instance=ExtResource("2_b02fj")]
-transform = Transform3D(-3.63722, 1.31, -15.1001, -2.84221, 15.1943, 2.00279, 14.8879, 3.22076, -3.3067, 195.454, -14.2889, -109.125)
-
-[node name="Soap5" parent="Bathtub" instance=ExtResource("2_b02fj")]
-transform = Transform3D(-4.3016, 2.71688, -14.7334, 5.27425, 14.622, 1.15645, 14.0227, -4.66622, -4.95458, -239.685, -17.218, 111.451)
-
-[node name="Soap8" parent="Bathtub" instance=ExtResource("2_b02fj")]
-transform = Transform3D(3.97771, -0.242976, -15.069, 5.27425, 14.622, 1.15645, 14.118, -5.39407, 3.81364, 198.742, -17.218, 111.451)
-
-[node name="Soap3" parent="Bathtub" instance=ExtResource("3_8tn5a")]
-transform = Transform3D(-19.1134, 0, -6.82192, 0, 24.0453, 0, 6.80072, 0, -19.173, -146.451, -15.8495, 8.62077)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bathtub/Soap3"]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, 0, 0, 1, -0.0448418, 2.16134, -0.062865)
-shape = SubResource("ConvexPolygonShape3D_ieobq")
-
-[node name="Soap7" parent="Bathtub" instance=ExtResource("3_8tn5a")]
-transform = Transform3D(-16.4089, 0, -5.85664, 0, 20.643, 0, 5.83844, 0, -16.4601, 113.575, -15.2458, 16.8624)
-
-[node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.4496, 2.47168, 0)
-
 [node name="StaticBody3D" parent="." instance=ExtResource("3_s86al")]
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(2.96473, -2.9576, 0, 2.9576, 2.96473, 0, 0, 0, 4.18772, 0, -1.44313, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
+shape = SubResource("BoxShape3D_lhx1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("PrismMesh_tekgr")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(-2.81042, 2.80366, 1.33343, 2.9576, 2.96473, 0, -0.94401, 0.941739, -3.96976, -38.9839, -1.44313, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
+shape = SubResource("BoxShape3D_lhx1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+mesh = SubResource("PrismMesh_tekgr")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.755526, 0.753709, 4.04946, 2.9576, 2.96473, 1.94148e-08, -2.86685, 2.85995, -1.06719, -18.4305, -1.29228, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
+shape = SubResource("BoxShape3D_lhx1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
+mesh = SubResource("PrismMesh_tekgr")
+
+[node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 5.92821)
+
 [node name="Player2" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -30.1149, 6.72673, -2.26295)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -5.54688)
 controls = ExtResource("4_en57g")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.569663, 0.804293, 0.169108, -0.0663318, -0.25008, 0.965951, 0.819197, 0.539049, 0.195811, 0, 7.60054, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-camera_attributes = SubResource("CameraAttributesPractical_jyfe2")

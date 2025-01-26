@@ -13,7 +13,7 @@ var curr_weapon_i:int = 0
 const SPEED := 10.0 # max speed the engine can get us to
 const JUMP_VELOCITY := 4.5
 const WATER_DRAG := 1.0
-const PLAYER_ACC := 3.0
+const PLAYER_ACC := 10.0
 const MAX_SPEED := 1000 # max speed with boosts
 const TURN_SPEED := 1
 const CAM_SPEED := 3.0
@@ -63,8 +63,8 @@ func _physics_process(delta: float) -> void:
 	
 	last_fire += delta
 	if Input.is_action_pressed(controls.fire):
-		
-		curr_weapon.fire_held(last_fire, velocity, bullet_spawn, world_ref)
+		var downwards_start := global_transform.basis.y * -1.0
+		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref)
 		last_fire = 0
 	
 	var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
@@ -87,9 +87,7 @@ func _physics_process(delta: float) -> void:
 		local_mesh_pivot.rotation.x = 0
 		
 		
-		# Handle jump.
-		if Input.is_action_just_pressed(controls.jump) and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+		
 
 		turn_desired = Input.get_axis(controls.turn_right, controls.turn_left)
 		
@@ -100,14 +98,18 @@ func _physics_process(delta: float) -> void:
 		var drive_dir := Input.get_axis(controls.move_forward, controls.move_backward)
 		var local_z := (transform.basis * velocity).z
 		var movement_power = 0
-		if Input.is_action_pressed(controls.move_forward):
-			local_z = 1
-		if local_z >= 0:
-			movement_power = 1
-		if local_z > 1:
-			movement_power = 0.3 * log(local_z)/LOG10
+		if (local_z > 10 || local_z < 10):
+			movement_power = 3
+		else:
+			movement_power =( cos(local_z * PI / 10) + 1) * 3
+		
+		# Handle jump.
+		if Input.is_action_just_pressed(controls.jump) and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		
 		
 		if curr_speed < SPEED:
+			
 			velocity.z = move_toward(velocity.z, MAX_SPEED, cos(rotation.y) * drive_dir * PLAYER_ACC * delta * movement_power)
 			velocity.x = move_toward(velocity.x, MAX_SPEED, sin(rotation.y) * drive_dir * PLAYER_ACC * delta * movement_power)
 		
@@ -116,24 +118,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, WATER_DRAG * delta)
 		
 	
-	var turn_power := 0.0
-	if curr_speed > 1 or curr_speed < -1:
-		#turn_power = 1 - log((abs(curr_speed)+.3)/4)/LOG10 + .5
-		turn_power = 1 - .4 * log(abs(curr_speed))/LOG10
-	else:
-		# turn_power = 1 + log((abs(curr_speed)+.3)/4)/LOG10 + .5
-		turn_power = 1.5 + log(abs(curr_speed))/LOG10
-	if turn_power < 0:
-		turn_power = 0
-		
 	
-	rotate_object_local(Vector3(0, 1, 0), delta * turn_dir * turn_power * TURN_SPEED)
-	velocity = velocity.rotated(Vector3(0, 1, 0),  delta * turn_dir * turn_power * TURN_SPEED)
+		var turn_power = 0
+		if (local_z > 10 || local_z < 10):
+			turn_power = 3
+		else:
+			turn_power = cos(local_z * PI / 10) + 2
+			
 	
-	
-	
-	
-	
+		rotate_object_local(Vector3(0, 1, 0), delta * turn_dir * turn_power * TURN_SPEED)
+		velocity = velocity.rotated(Vector3(0, 1, 0),  delta * turn_dir * turn_power * TURN_SPEED)
 	
 
 	move_and_slide()

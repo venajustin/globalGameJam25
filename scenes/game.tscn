@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_c6fns"]
 [ext_resource type="PackedScene" uid="uid://12m6mey3y65b" path="res://scenes/bathtub_level.tscn" id="2_3woku"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0gx3v"]
-size = Vector2(10, 10)
+[ext_resource type="Texture2D" uid="uid://b01ryxtdt0glq" path="res://assets/Textures/Sniper_Decal.png" id="3_qr20o"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_c6fns")
@@ -44,15 +42,17 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 480.0
-offset_top = 540.0
-offset_right = 520.0
-offset_bottom = 580.0
-texture = SubResource("PlaceholderTexture2D_0gx3v")
+texture_filter = 1
+offset_left = 352.0
+offset_top = 412.0
+offset_right = 608.0
+offset_bottom = 668.0
+texture = ExtResource("3_qr20o")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = 1440.0
-offset_top = 540.0
-offset_right = 1480.0
-offset_bottom = 580.0
-texture = SubResource("PlaceholderTexture2D_0gx3v")
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 1312.0
+offset_top = 412.0
+offset_right = 1568.0
+offset_bottom = 668.0
+texture = ExtResource("3_qr20o")
