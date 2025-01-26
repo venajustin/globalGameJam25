@@ -1,4 +1,5 @@
-extends Node3D
+class_name Bullet
+extends Area3D
 
 var damage:float = 10
 var travel_distance:float = 10
@@ -10,6 +11,8 @@ var starting_velocity:Vector3 = Vector3(0, 0, 0)
 var min_speed:float
 
 var velocity := Vector3(0, 0, 0)
+
+var creator:Node = null
 
 
 # Called when the node enters the scene tree for the first time.

@@ -10,6 +10,13 @@ var curr_weapon_i:int = 0
 @onready var bullet_spawn := $LocalMeshPivot/bullet_spawn
 @onready var world_ref := $"../"
 
+@export var gun_local_last_fire:Resource
+
+signal damage_taken
+signal swap_weapon
+signal register_weapon
+signal died
+
 const SPEED := 7.0 # max speed the engine can get us to
 const RUN_SPEED := 20.0
 const BOOST := 1.5
@@ -27,6 +34,8 @@ const LOG10 = log(10)
 
 var look_dir: Vector3 = Vector3(1, 1, 1);
 
+var health:int = 100
+
 var tilt_ammount:float = 0
 var input_direction:Vector2
 const TILT_SNAP := 5.0
@@ -36,13 +45,20 @@ func _ready() -> void:
 		if curr_weapon_i < weapons.size():
 			curr_weapon = weapons[curr_weapon_i]
 			swap_mesh_to_weapon()
+	
 
+func register_hud() -> void:
+	for wep in weapons:
+		register_weapon.emit(wep)
+	damage_taken.emit(health)
+	swap_weapon.emit(curr_weapon_i)
 
 func swap_mesh_to_weapon() -> void:
 	local_mesh_pivot.get_child(0).queue_free()
 	var new_mesh = curr_weapon.mesh_scene.instantiate()
 	local_mesh_pivot.add_child(new_mesh)
 	local_mesh_pivot.move_child(new_mesh, 0)
+	swap_weapon.emit(curr_weapon_i)
 
 
 
@@ -71,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	last_fire += delta
 	if Input.is_action_pressed(controls.fire):
 		var downwards_start := global_transform.basis.y * -1.0
-		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref, global_transform.basis.y)
+		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref, global_transform.basis.y, self, gun_local_last_fire)
 		last_fire = 0
 	
 	var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
@@ -89,6 +105,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		desired_direction = Vector2(0, 0)
 	else:
+		if Input.is_action_just_pressed(controls.jump) and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 		velocity.x = move_toward(velocity.x, 0, WATER_DRAG * delta)
 		velocity.z = move_toward(velocity.z, 0, WATER_DRAG * delta)
 	
@@ -152,7 +170,15 @@ func _physics_process(delta: float) -> void:
 	#local_mesh_pivot.transform = local_mesh_pivot.transform.rotated(transform.basis.z, input_direction.x * tilt_ammount )
 	#local_mesh_pivot.transform = local_mesh_pivot.transform.rotated(transform.basis.x, input_direction.y * tilt_ammount )
 
-	
-
-
 	move_and_slide()
+
+func _on_hitbox_enter(area: Area3D) -> void:
+	if area is Bullet:
+		if area.creator != self:
+			var dmg:int = area.damage * 100
+			health -= dmg
+			if health < 0:
+				health = 0
+				died.emit()
+			area.queue_free()
+			damage_taken.emit(health)

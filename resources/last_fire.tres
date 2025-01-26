@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://8cephf6ruf4w"]
+
+[sub_resource type="GDScript" id="GDScript_21isn"]
+script/source = "extends Resource
+
+var time:float
+"
+
+[resource]
+resource_local_to_scene = true
+script = SubResource("GDScript_21isn")

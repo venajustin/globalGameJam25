@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://e2f0w6llnvbc"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_33enu"]
+[ext_resource type="Texture2D" uid="uid://b01ryxtdt0glq" path="res://assets/Textures/Sniper_Decal.png" id="1_y0qr4"]
+[ext_resource type="FontFile" uid="uid://bn3w1f6ivmjpt" path="res://assets/Boxfont Round.ttf" id="2_io2nu"]
+[ext_resource type="PackedScene" uid="uid://b5pdrd1e28m7m" path="res://scenes/weapon_selection.tscn" id="3_w3vbl"]
+[ext_resource type="Texture2D" uid="uid://db0y5jl641vw7" path="res://assets/Textures/Healthbar.png" id="4_0jjbu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2xduf"]
+font = ExtResource("2_io2nu")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_43aa8"]
+offsets = PackedFloat32Array(0.0166667, 1)
+colors = PackedColorArray(0.601432, 0.875496, 1, 1, 1.34766e-06, 0.682441, 0.690411, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cejhm"]
+gradient = SubResource("Gradient_43aa8")
+width = 256
+height = 32
+fill_from = Vector2(0.52459, 0)
+fill_to = Vector2(0.122951, 0.786885)
+
+[node name="Player1Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 958.0
+offset_bottom = 1080.0
+script = ExtResource("1_33enu")
+weapon_option_s = ExtResource("3_w3vbl")
+deselect_color = Color(0, 0, 0, 0)
+select_color = Color(0.255588, 0.917977, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y0qr4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -118.0
+offset_right = -7.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -54.0
+offset_right = 292.0
+offset_bottom = 54.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "PLAYER 1"
+label_settings = SubResource("LabelSettings_2xduf")
+
+[node name="WeaponSelection" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+value = 100.0
+texture_over = ExtResource("4_0jjbu")
+texture_progress = SubResource("GradientTexture2D_cejhm")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cv1lf7s3nrru4"]
+
+[ext_resource type="PackedScene" uid="uid://cfpgwm3y0xf8j" path="res://scenes/bullet.tscn" id="1_rq4fg"]
+[ext_resource type="Texture2D" uid="uid://bc7v5almyh8y4" path="res://assets/Icons/shotgun_duck.png" id="2_7boj3"]
+[ext_resource type="PackedScene" uid="uid://con23fp5p576c" path="res://scenes/weapon_models/shotgun_ducky_static_textured.tscn" id="2_sffgh"]
+[ext_resource type="Script" path="res://scripts/weapons/gun.gd" id="3_vc8gj"]
+
+[resource]
+script = ExtResource("3_vc8gj")
+mesh_scene = ExtResource("2_sffgh")
+bullet = ExtResource("1_rq4fg")
+icon = ExtResource("2_7boj3")
+fire_type = 2
+fire_rate = 0.5
+damage = 0.03
+travel_distance = 150.0
+bullet_drop = 2.0
+bullet_speed = 30.0

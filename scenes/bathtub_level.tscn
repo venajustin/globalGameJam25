@@ -1,12 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://12m6mey3y65b"]
+[gd_scene load_steps=25 format=3 uid="uid://12m6mey3y65b"]
 
-[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://bak5lkmnkf5hu" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
 [ext_resource type="Texture2D" uid="uid://cxajwnb7cm56p" path="res://assets/Textures/en_suite_2k.hdr" id="1_hx02n"]
 [ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="2_pbqep"]
-[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
+[ext_resource type="PackedScene" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
 [ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
+[ext_resource type="Resource" uid="uid://no3uath3qcre" path="res://resources/weapons/smg.tres" id="7_cjdqi"]
+[ext_resource type="PackedScene" uid="uid://cfpgwm3y0xf8j" path="res://scenes/bullet.tscn" id="7_n6sqd"]
+[ext_resource type="Resource" uid="uid://fyt8cynh3fv5" path="res://resources/weapons/sniper.tres" id="8_ciqxt"]
+[ext_resource type="PackedScene" uid="uid://j7st03ssulyc" path="res://scenes/weapon_models/ducky_static_textured.tscn" id="8_mly2t"]
+[ext_resource type="Script" path="res://scripts/weapons/gun.gd" id="9_odisv"]
+[ext_resource type="Resource" uid="uid://cv1lf7s3nrru4" path="res://resources/weapons/shotgun.tres" id="9_wumvs"]
+[ext_resource type="PackedScene" uid="uid://d37eajccf7g8g" path="res://scenes/weapon_models/sniper_ducky_static_textured.tscn" id="10_hehk0"]
+[ext_resource type="PackedScene" uid="uid://con23fp5p576c" path="res://scenes/weapon_models/shotgun_ducky_static_textured.tscn" id="11_cl4cq"]
+[ext_resource type="Texture2D" uid="uid://bc7v5almyh8y4" path="res://assets/Icons/shotgun_duck.png" id="11_galhg"]
+[ext_resource type="Texture2D" uid="uid://ekf0ymvs71pf" path="res://assets/Icons/smg_duck.png" id="13_3minj"]
+[ext_resource type="Texture2D" uid="uid://bdkqyqucsfe5e" path="res://assets/Icons/sniper_duck.png" id="13_xs5k0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_386ux"]
 panorama = ExtResource("1_hx02n")
@@ -42,6 +53,45 @@ volumetric_fog_anisotropy = -0.16
 volumetric_fog_length = 48.94
 volumetric_fog_ambient_inject = 0.57
 adjustment_enabled = true
+
+[sub_resource type="Resource" id="Resource_chnmb"]
+resource_local_to_scene = true
+script = ExtResource("9_odisv")
+mesh_scene = ExtResource("8_mly2t")
+bullet = ExtResource("7_n6sqd")
+icon = ExtResource("13_3minj")
+fire_type = 1
+fire_rate = 0.05
+damage = 0.05
+travel_distance = 150.0
+bullet_drop = 2.0
+bullet_speed = 30.0
+
+[sub_resource type="Resource" id="Resource_tnmwc"]
+resource_local_to_scene = true
+script = ExtResource("9_odisv")
+mesh_scene = ExtResource("11_cl4cq")
+bullet = ExtResource("7_n6sqd")
+icon = ExtResource("11_galhg")
+fire_type = 2
+fire_rate = 0.5
+damage = 0.02
+travel_distance = 150.0
+bullet_drop = 2.0
+bullet_speed = 30.0
+
+[sub_resource type="Resource" id="Resource_uavyh"]
+resource_local_to_scene = true
+script = ExtResource("9_odisv")
+mesh_scene = ExtResource("10_hehk0")
+bullet = ExtResource("7_n6sqd")
+icon = ExtResource("13_xs5k0")
+fire_type = 0
+fire_rate = 1.0
+damage = 0.5
+travel_distance = 600.0
+bullet_drop = 0.5
+bullet_speed = 40.0
 
 [node name="World" type="Node3D"]
 
@@ -100,8 +150,10 @@ transform = Transform3D(5.00056, -1.46824, -14.883, 3.54944, 15.3611, -0.322819,
 [node name="StaticBody3D" parent="." instance=ExtResource("3_s86al")]
 
 [node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-0.000104681, 0, 1, 0, 1, 0, -1, 0, -0.000104681, 8.461, 0, 1.59676)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.9967, 0, 0)
+weapons = Array[Resource]([ExtResource("7_cjdqi"), ExtResource("9_wumvs"), ExtResource("8_ciqxt")])
 
 [node name="Player2" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(0.0202618, 0, -0.999795, 0, 1, 0, 0.999795, 0, 0.0202618, -42.0443, 0, 0.35003)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.07178, 0.0154443, 0.00400734)
 controls = ExtResource("4_en57g")
+weapons = Array[Resource]([SubResource("Resource_chnmb"), SubResource("Resource_tnmwc"), SubResource("Resource_uavyh")])

@@ -1,63 +1,51 @@
-[gd_scene load_steps=19 format=3 uid="uid://2g4r8qbfug68"]
+[gd_scene load_steps=13 format=3 uid="uid://2g4r8qbfug68"]
 
 [ext_resource type="Script" path="res://scripts/ducky.gd" id="1_7kdm6"]
 [ext_resource type="PackedScene" uid="uid://cfpgwm3y0xf8j" path="res://scenes/bullet.tscn" id="2_q64pj"]
-[ext_resource type="Texture2D" uid="uid://ekf0ymvs71pf" path="res://assets/Icons/smg_duck.png" id="3_5bvd3"]
 [ext_resource type="PackedScene" uid="uid://j7st03ssulyc" path="res://scenes/weapon_models/ducky_static_textured.tscn" id="3_eiruf"]
 [ext_resource type="Script" path="res://scripts/weapons/gun.gd" id="4_po5vk"]
 [ext_resource type="PackedScene" uid="uid://d37eajccf7g8g" path="res://scenes/weapon_models/sniper_ducky_static_textured.tscn" id="5_2gxea"]
 [ext_resource type="PackedScene" uid="uid://con23fp5p576c" path="res://scenes/weapon_models/shotgun_ducky_static_textured.tscn" id="6_0hmjv"]
-[ext_resource type="Texture2D" uid="uid://bc7v5almyh8y4" path="res://assets/Icons/shotgun_duck.png" id="6_ml1w1"]
-[ext_resource type="Texture2D" uid="uid://bdkqyqucsfe5e" path="res://assets/Icons/sniper_duck.png" id="8_dd5ia"]
-[ext_resource type="Shader" path="res://scenes/ducky_flash.gdshader" id="10_72o4i"]
-[ext_resource type="Resource" uid="uid://8cephf6ruf4w" path="res://resources/last_fire.tres" id="10_xskbl"]
 
-[sub_resource type="Resource" id="Resource_k6xhv"]
+[sub_resource type="Resource" id="Resource_ghc5s"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("3_eiruf")
 bullet = ExtResource("2_q64pj")
-icon = ExtResource("3_5bvd3")
 fire_type = 1
 fire_rate = 0.05
-damage = 0.05
+damage = 10.0
 travel_distance = 150.0
 bullet_drop = 2.0
 bullet_speed = 30.0
 
-[sub_resource type="Resource" id="Resource_qdapf"]
-resource_local_to_scene = true
-script = ExtResource("4_po5vk")
-mesh_scene = ExtResource("6_0hmjv")
-bullet = ExtResource("2_q64pj")
-icon = ExtResource("6_ml1w1")
-fire_type = 2
-fire_rate = 0.5
-damage = 0.02
-travel_distance = 150.0
-bullet_drop = 2.0
-bullet_speed = 30.0
-
-[sub_resource type="Resource" id="Resource_rixed"]
+[sub_resource type="Resource" id="Resource_58hvi"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("5_2gxea")
 bullet = ExtResource("2_q64pj")
-icon = ExtResource("8_dd5ia")
 fire_type = 0
 fire_rate = 1.0
-damage = 0.5
+damage = 100.0
 travel_distance = 600.0
 bullet_drop = 0.5
 bullet_speed = 40.0
 
+[sub_resource type="Resource" id="Resource_n6k5r"]
+resource_local_to_scene = true
+script = ExtResource("4_po5vk")
+mesh_scene = ExtResource("6_0hmjv")
+bullet = ExtResource("2_q64pj")
+fire_type = 1
+fire_rate = 0.5
+damage = 10.0
+travel_distance = 150.0
+bullet_drop = 2.0
+bullet_speed = 30.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d3q2q"]
 radius = 7.71667
 height = 23.8093
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_48sm3"]
-render_priority = 0
-shader = ExtResource("10_72o4i")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utv2e"]
 radius = 0.399605
@@ -70,8 +58,7 @@ height = 1.51501
 [node name="Ducky" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_7kdm6")
-weapons = Array[Resource]([SubResource("Resource_k6xhv"), SubResource("Resource_qdapf"), SubResource("Resource_rixed")])
-gun_local_last_fire = ExtResource("10_xskbl")
+weapons = Array[Resource]([SubResource("Resource_ghc5s"), SubResource("Resource_58hvi"), SubResource("Resource_n6k5r")])
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.0614221, -7.13081e-10, 1.23695e-16, -5.26949e-17, -2.68485e-09, -0.0614221, 7.13081e-10, 0.0614221, -2.68485e-09, -1.68732e-09, 0.451582, -0.0280118)
@@ -81,24 +68,12 @@ shape = SubResource("CapsuleShape3D_d3q2q")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.18203e-08, 0, -0.0105894)
 
 [node name="Normal_Ducky_Textured" parent="LocalMeshPivot" instance=ExtResource("3_eiruf")]
-material_overlay = SubResource("ShaderMaterial_48sm3")
 
 [node name="bullet_spawn" type="Marker3D" parent="LocalMeshPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94708e-07, 0.953839, 0.592828)
 
 [node name="fire_dir" type="Marker3D" parent="LocalMeshPivot/bullet_spawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0517e-07, 0, 0.601505)
-
-[node name="Hitbox" type="Area3D" parent="LocalMeshPivot"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.08945e-08, 0, -0.0105894)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LocalMeshPivot/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1423e-08, 0.742011, -0.130663)
-shape = SubResource("CapsuleShape3D_utv2e")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="LocalMeshPivot/Hitbox"]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -1.2076e-09, 0.335626, -0.0138133)
-shape = SubResource("CapsuleShape3D_os4qm")
 
 [node name="camera_pivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -3.16895e-08, 0.6272, 0.0485265)
@@ -112,5 +87,15 @@ transform = Transform3D(-0.561376, 0, 0.827561, 0, 1, 0, -0.827561, 0, -0.561376
 remote_path = NodePath("../camera_pivot")
 update_rotation = false
 
-[connection signal="area_entered" from="LocalMeshPivot/Hitbox" to="." method="_on_hitbox_enter"]
-[connection signal="body_entered" from="LocalMeshPivot/Hitbox" to="." method="_on_hitbox_body_entered"]
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1423e-08, 0.742011, -0.130663)
+shape = SubResource("CapsuleShape3D_utv2e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, -1.2076e-09, 0.335626, -0.0138133)
+shape = SubResource("CapsuleShape3D_os4qm")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_enter"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

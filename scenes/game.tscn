@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://nw0fea777ewm"]
+[gd_scene load_steps=6 format=3 uid="uid://nw0fea777ewm"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_c6fns"]
 [ext_resource type="PackedScene" uid="uid://12m6mey3y65b" path="res://scenes/bathtub_level.tscn" id="2_3woku"]
-[ext_resource type="Texture2D" uid="uid://b01ryxtdt0glq" path="res://assets/Textures/Sniper_Decal.png" id="3_qr20o"]
+[ext_resource type="PackedScene" uid="uid://e2f0w6llnvbc" path="res://scenes/hud.tscn" id="3_copyy"]
+[ext_resource type="FontFile" uid="uid://bn3w1f6ivmjpt" path="res://assets/Boxfont Round.ttf" id="4_sponc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu5ik"]
+font = ExtResource("4_sponc")
+font_size = 128
 
 [node name="Game" type="Node"]
 script = ExtResource("1_c6fns")
@@ -41,18 +46,53 @@ offset_right = 962.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 352.0
-offset_top = 412.0
-offset_right = 608.0
-offset_bottom = 668.0
-texture = ExtResource("3_qr20o")
+[node name="Player1Hud" parent="." instance=ExtResource("3_copyy")]
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 1312.0
-offset_top = 412.0
-offset_right = 1568.0
-offset_bottom = 668.0
-texture = ExtResource("3_qr20o")
+[node name="Player2Hud" parent="." instance=ExtResource("3_copyy")]
+offset_left = 962.0
+offset_right = 1920.0
+
+[node name="Label" parent="Player2Hud/Control/VBoxContainer" index="0"]
+text = "PLAYER 2"
+
+[node name="TextureProgressBar" parent="Player2Hud/Control" index="1"]
+step = 1.0
+
+[node name="GameOver" type="Panel" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_bu5ik")
+
+[node name="Label2" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = 95.0
+offset_right = 348.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_bu5ik")
+
+[editable path="Player2Hud"]

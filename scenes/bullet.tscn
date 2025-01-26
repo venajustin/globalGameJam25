@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6byngvl5uejt"]
+[gd_scene load_steps=4 format=3 uid="uid://cfpgwm3y0xf8j"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_vn8ss"]
 [ext_resource type="PackedScene" uid="uid://clbpk5vdelg78" path="res://scenes/weapon_models/bubble_bullet_static.tscn" id="2_x3ujq"]
 
-[node name="Bullet" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_8nokm"]
+radius = 0.152765
+
+[node name="Area3D" type="Area3D"]
 script = ExtResource("1_vn8ss")
 
 [node name="Bubble_Bullet_Static" parent="." instance=ExtResource("2_x3ujq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000614131, -5.96046e-08, -0.00237799)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8nokm")
