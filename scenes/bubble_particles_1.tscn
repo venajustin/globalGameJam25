@@ -18,7 +18,7 @@ height = 0.1
 radial_segments = 10
 rings = 5
 
-[node name="Bubble_Particles1" type="GPUParticles3D"]
+[node name="GPUParticles3D" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00864792, -0.0113432, 0.00775743)
 material_override = SubResource("ShaderMaterial_6jxe7")
 amount = 25
