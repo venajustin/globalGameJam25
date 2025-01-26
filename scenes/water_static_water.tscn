@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://35fg6hj3y37g"]
+
+[ext_resource type="PackedScene" uid="uid://cbsmmf3l48uut" path="res://scenes/water.tscn" id="1_bh2a8"]
+[ext_resource type="Shader" uid="uid://dp0gktttkox6n" path="res://Shaders/Water.tres" id="2_0f4dk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j12qt"]
+render_priority = 0
+shader = ExtResource("2_0f4dk")
+shader_parameter/Color = Color(0, 0.242291, 0.457021, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i0udf"]
+size = Vector3(73.4816, 0.381592, 40.208)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Water_Plane" parent="." instance=ExtResource("1_bh2a8")]
+material_override = SubResource("ShaderMaterial_j12qt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3847, -0.796231, -0.173416)
+shape = SubResource("BoxShape3D_i0udf")

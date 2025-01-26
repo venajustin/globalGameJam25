@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nw0fea777ewm"]
 
-[ext_resource type="PackedScene" uid="uid://cmwxadby8lrsl" path="res://scenes/world.tscn" id="1_5yin5"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_c6fns"]
+[ext_resource type="PackedScene" uid="uid://12m6mey3y65b" path="res://scenes/bathtub_level.tscn" id="2_3woku"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0gx3v"]
 size = Vector2(10, 10)
@@ -21,7 +21,7 @@ handle_input_locally = false
 size = Vector2i(958, 1080)
 render_target_update_mode = 4
 
-[node name="World" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_5yin5")]
+[node name="World" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_3woku")]
 
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
 current = true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddx7vyhi40k4t"]
+
+[ext_resource type="Shader" uid="uid://dp0gktttkox6n" path="res://Shaders/Water.tres" id="1_mfh2p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yajpn"]
+render_priority = 0
+shader = ExtResource("1_mfh2p")
+shader_parameter/Color = Color(0, 0.242291, 0.457021, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6clhi"]
+size = Vector2(4, 2)
+subdivide_width = 30
+subdivide_depth = 30
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsesv"]
+size = Vector3(66.6905, 1, 33.5901)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(17.3767, 0, 0, 0, 17.3767, 0, 0, 0, 17.3767, -16.2993, -1.12128, 0)
+material_override = SubResource("ShaderMaterial_yajpn")
+mesh = SubResource("PlaneMesh_6clhi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7387, -1.80709, -0.123413)
+shape = SubResource("BoxShape3D_bsesv")
