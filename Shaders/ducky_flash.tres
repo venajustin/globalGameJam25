@@ -1,0 +1,64 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://w2gut2kkrijp"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hj7nx"]
+parameter_name = "Alpha"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_u57gh"]
+parameter_name = "Color"
+default_value_enabled = true
+default_value = Color(0.94933, 0, 0.184192, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j2idi"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_b6y6y"]
+width = 300
+height = 300
+depth = 300
+seamless = true
+seamless_blend_skirt = 0.109
+noise = SubResource("FastNoiseLite_j2idi")
+
+[sub_resource type="VisualShaderNodeTexture3D" id="VisualShaderNodeTexture3D_oobp3"]
+texture = SubResource("NoiseTexture3D_b6y6y")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_faalq"]
+input_name = "time"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 Color : source_color = vec4(0.949330, 0.000000, 0.184192, 1.000000);
+uniform float Alpha = 0;
+
+
+
+void light() {
+// ColorParameter:3
+	vec4 n_out3p0 = Color;
+
+
+// FloatParameter:2
+	float n_out2p0 = Alpha;
+
+
+// Output:0
+	DIFFUSE_LIGHT = vec3(n_out3p0.xyz);
+	ALPHA = n_out2p0;
+
+
+}
+"
+graph_offset = Vector2(157.068, -14.9138)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture3D_oobp3")
+nodes/vertex/2/position = Vector2(-120, 200)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_faalq")
+nodes/vertex/3/position = Vector2(-120, 420)
+nodes/fragment/0/position = Vector2(1560, 140)
+nodes/light/0/position = Vector2(1180, 200)
+nodes/light/2/node = SubResource("VisualShaderNodeFloatParameter_hj7nx")
+nodes/light/2/position = Vector2(540, 280)
+nodes/light/3/node = SubResource("VisualShaderNodeColorParameter_u57gh")
+nodes/light/3/position = Vector2(520, 60)
+nodes/light/connections = PackedInt32Array(2, 0, 0, 2, 3, 0, 0, 0)

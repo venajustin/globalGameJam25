@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5koabv4o2v7x"]
+
+[ext_resource type="AudioStream" uid="uid://bpauadge1lxr8" path="res://assets/Sound Effects/splash-water-103984.mp3" id="1_aubd2"]
+[ext_resource type="AudioStream" uid="uid://b40150tbhcwdb" path="res://assets/Sound Effects/splash_small-02.mp3" id="2_xtyks"]
+[ext_resource type="AudioStream" uid="uid://dwp00v8en4dc" path="res://assets/Sound Effects/splash_small-03.mp3" id="3_ccx6y"]
+[ext_resource type="AudioStream" uid="uid://d1gj4vqwm1jn8" path="res://assets/Sound Effects/splash_small-04.mp3" id="4_1hnqq"]
+[ext_resource type="AudioStream" uid="uid://bbmsmjgvoqjo2" path="res://assets/Sound Effects/splash_small-05.mp3" id="5_4konk"]
+[ext_resource type="AudioStream" uid="uid://bacdnnqvyh5cp" path="res://assets/Sound Effects/splash_small-01.mp3" id="6_jojph"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cvk1b"]
+streams_count = 6
+stream_0/stream = ExtResource("1_aubd2")
+stream_1/stream = ExtResource("2_xtyks")
+stream_2/stream = ExtResource("3_ccx6y")
+stream_3/stream = ExtResource("4_1hnqq")
+stream_4/stream = ExtResource("5_4konk")
+stream_5/stream = ExtResource("6_jojph")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamRandomizer_cvk1b")
+volume_db = -1.0
+bus = &"water"
