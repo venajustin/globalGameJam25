@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://chrbk1bcdwg4x"]
+[gd_resource type="VisualShader" load_steps=23 format=3 uid="uid://chrbk1bcdwg4x"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_k8a4i"]
 operator = 5
@@ -23,24 +23,13 @@ default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 constant = 25.0
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_uphuu"]
-constant = 0.2
+constant = 1.0
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_eb82i"]
-constant = 25.0
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_eyxeb"]
+constant = 1.0
 
-[sub_resource type="Gradient" id="Gradient_6fbus"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l4572"]
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_62m5n"]
-width = 128
-height = 128
-depth = 128
-color_ramp = SubResource("Gradient_6fbus")
-noise = SubResource("FastNoiseLite_l4572")
-
-[sub_resource type="VisualShaderNodeTexture3D" id="VisualShaderNodeTexture3D_oiycs"]
-texture = SubResource("NoiseTexture3D_62m5n")
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_haoht"]
+default_input_values = [2, true, 3, 10.0]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_vff54"]
 parameter_name = "Color"
@@ -50,7 +39,7 @@ default_value_enabled = true
 constant = 0.001
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_1xsjn"]
-constant = 1.0
+constant = 2.0
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_dv3bj"]
 input_name = "view"
@@ -109,7 +98,7 @@ void fragment() {
 
 
 // FloatConstant:17
-	float n_out17p0 = 0.200000;
+	float n_out17p0 = 1.000000;
 
 
 // FloatConstant:20
@@ -117,11 +106,11 @@ void fragment() {
 
 
 // FloatConstant:21
-	float n_out21p0 = 1.000000;
+	float n_out21p0 = 2.000000;
 
 
 // FloatConstant:18
-	float n_out18p0 = 25.000000;
+	float n_out18p0 = 1.000000;
 
 
 // Output:0
@@ -134,7 +123,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-99.4893, 203.241)
+graph_offset = Vector2(-316.356, -162.386)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_vff54")
 nodes/fragment/2/position = Vector2(-1547.54, 328.083)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_whxct")
@@ -167,9 +156,9 @@ nodes/fragment/16/node = SubResource("VisualShaderNodeFloatConstant_dqoae")
 nodes/fragment/16/position = Vector2(80, 780)
 nodes/fragment/17/node = SubResource("VisualShaderNodeFloatConstant_uphuu")
 nodes/fragment/17/position = Vector2(0, 300)
-nodes/fragment/18/node = SubResource("VisualShaderNodeFloatConstant_eb82i")
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatConstant_eyxeb")
 nodes/fragment/18/position = Vector2(-40, 460)
-nodes/fragment/19/node = SubResource("VisualShaderNodeTexture3D_oiycs")
+nodes/fragment/19/node = SubResource("VisualShaderNodeFresnel_haoht")
 nodes/fragment/19/position = Vector2(-440, 180)
 nodes/fragment/20/node = SubResource("VisualShaderNodeFloatConstant_tnpv8")
 nodes/fragment/20/position = Vector2(40, 200)
@@ -179,4 +168,5 @@ nodes/fragment/22/node = SubResource("VisualShaderNodeInput_dv3bj")
 nodes/fragment/22/position = Vector2(-340, 60)
 nodes/fragment/23/node = SubResource("VisualShaderNodeColorFunc_dj5v3")
 nodes/fragment/23/position = Vector2(60, 80)
-nodes/fragment/connections = PackedInt32Array(2, 0, 5, 0, 3, 0, 5, 1, 7, 0, 6, 0, 8, 0, 6, 1, 6, 0, 9, 1, 9, 0, 10, 0, 4, 0, 10, 1, 2, 0, 11, 0, 10, 0, 12, 0, 11, 3, 12, 1, 13, 0, 14, 1, 5, 0, 14, 0, 12, 0, 15, 0, 16, 0, 0, 17, 17, 0, 0, 1, 19, 0, 0, 0, 18, 0, 0, 19, 20, 0, 0, 3, 22, 0, 23, 0, 23, 0, 0, 0, 21, 0, 0, 17)
+nodes/fragment/connections = PackedInt32Array(17, 0, 0, 1, 22, 0, 23, 0, 2, 0, 5, 0, 3, 0, 5, 1, 7, 0, 6, 0, 8, 0, 6, 1, 6, 0, 9, 1, 9, 0, 10, 0, 4, 0, 10, 1, 2, 0, 11, 0, 10, 0, 12, 0, 11, 3, 12, 1, 13, 0, 14, 1, 5, 0, 14, 0, 12, 0, 15, 0, 16, 0, 0, 17, 23, 0, 0, 0, 20, 0, 0, 3, 18, 0, 0, 19, 21, 0, 0, 17)
+nodes/light/0/position = Vector2(400, 140)

@@ -1,23 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://12m6mey3y65b"]
+[gd_scene load_steps=9 format=3 uid="uid://c0oh8evcrqh7l"]
 
-[ext_resource type="PackedScene" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="2_b02fj"]
+[ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="3_8tn5a"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
-[ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
+[ext_resource type="PackedScene" uid="uid://cmdyx0quyyiia" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ieobq"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jyfe2"]
 
 [node name="World" type="Node3D"]
 
 [node name="Bathtub" parent="." instance=ExtResource("1_7lmtm")]
 transform = Transform3D(0.115405, 0, 0, 0, 0.115405, 0, 0, 0, 0.115405, -12.9265, 1.09308, 0)
 
+[node name="Soap4" parent="Bathtub" instance=ExtResource("2_b02fj")]
+transform = Transform3D(1.05051, 0.849222, -15.5285, -3.16146, 15.2505, 0.620147, 15.2269, 3.10777, 1.20007, -236.838, -14.2889, -120.34)
+
+[node name="Soap6" parent="Bathtub" instance=ExtResource("2_b02fj")]
+transform = Transform3D(-3.63722, 1.31, -15.1001, -2.84221, 15.1943, 2.00279, 14.8879, 3.22076, -3.3067, 195.454, -14.2889, -109.125)
+
+[node name="Soap5" parent="Bathtub" instance=ExtResource("2_b02fj")]
+transform = Transform3D(-4.3016, 2.71688, -14.7334, 5.27425, 14.622, 1.15645, 14.0227, -4.66622, -4.95458, -239.685, -17.218, 111.451)
+
+[node name="Soap8" parent="Bathtub" instance=ExtResource("2_b02fj")]
+transform = Transform3D(3.97771, -0.242976, -15.069, 5.27425, 14.622, 1.15645, 14.118, -5.39407, 3.81364, 198.742, -17.218, 111.451)
+
+[node name="Soap3" parent="Bathtub" instance=ExtResource("3_8tn5a")]
+transform = Transform3D(-19.1134, 0, -6.82192, 0, 24.0453, 0, 6.80072, 0, -19.173, -146.451, -15.8495, 8.62077)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bathtub/Soap3"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, 0, 0, 1, -0.0448418, 2.16134, -0.062865)
+shape = SubResource("ConvexPolygonShape3D_ieobq")
+
+[node name="Soap7" parent="Bathtub" instance=ExtResource("3_8tn5a")]
+transform = Transform3D(-16.4089, 0, -5.85664, 0, 20.643, 0, 5.83844, 0, -16.4601, 113.575, -15.2458, 16.8624)
+
 [node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.47168, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.4496, 2.47168, 0)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("3_s86al")]
 
 [node name="Player2" parent="." instance=ExtResource("3_q8ji0")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -31.875, 2.50012, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -30.1149, 6.72673, -2.26295)
 controls = ExtResource("4_en57g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.240057, 0.728426, 0.641691, 0.174092, -0.682608, 0.709745, 0.955021, -0.0586657, -0.290678, 0, 7.60054, 0)
+transform = Transform3D(-0.569663, 0.804293, 0.169108, -0.0663318, -0.25008, 0.965951, 0.819197, 0.539049, 0.195811, 0, 7.60054, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_jyfe2")

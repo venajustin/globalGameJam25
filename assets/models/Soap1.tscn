@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://wg7ss5mj2ngb"]
+
+[ext_resource type="Shader" uid="uid://ciuumavbci1if" path="res://Shaders/Soap1.tres" id="1_poqv1"]
+[ext_resource type="ArrayMesh" uid="uid://ceccw2tg5qa8q" path="res://assets/models/Soap1.obj" id="2_fg8de"]
+[ext_resource type="Shader" uid="uid://chrbk1bcdwg4x" path="res://Shaders/Soap2.tres" id="3_e4h2n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjg5s"]
+render_priority = 0
+shader = ExtResource("1_poqv1")
+shader_parameter/Color = Color(1, 0, 1, 1)
+shader_parameter/Amount = 5.0
+shader_parameter/Sharpness = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_183um"]
+render_priority = 0
+shader = ExtResource("3_e4h2n")
+
+[node name="Soap1" type="Node3D"]
+
+[node name="Soap" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99971, 0, 0, 0, 0.99971, 0, 0, 0, 0.99971, -0.0495847, 0.0146112, 0.214794)
+material_override = SubResource("ShaderMaterial_rjg5s")
+mesh = ExtResource("2_fg8de")
+
+[node name="Soap_Inner" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.988893, 0, 0, 0, 0.988893, 0, 0, 0, 0.988893, -0.0495847, 0.0146112, 0.214794)
+material_override = SubResource("ShaderMaterial_183um")
+mesh = ExtResource("2_fg8de")
+skeleton = NodePath("../Soap")

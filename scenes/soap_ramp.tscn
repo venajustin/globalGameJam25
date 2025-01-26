@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvsbcsf3gdhmn"]
+
+[ext_resource type="Shader" uid="uid://ciuumavbci1if" path="res://Shaders/Soap1.tres" id="1_kkyud"]
+[ext_resource type="ArrayMesh" uid="uid://ske23juywp7q" path="res://assets/models/Shallow_Bubble_Ramp.obj" id="2_5bssj"]
+[ext_resource type="Shader" uid="uid://chrbk1bcdwg4x" path="res://Shaders/Soap2.tres" id="3_dgfg7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd8cl"]
+render_priority = 0
+shader = ExtResource("1_kkyud")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Amount = 32.0
+shader_parameter/Sharpness = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_he5jy"]
+render_priority = 0
+shader = ExtResource("3_dgfg7")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Soap2" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("ShaderMaterial_vd8cl")
+mesh = ExtResource("2_5bssj")
+
+[node name="Soap2_inner" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.982385, 0, 0, 0, 0.982385, 0, 0, 0, 0.982385, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_he5jy")
+mesh = ExtResource("2_5bssj")
+skeleton = NodePath("../Soap2")

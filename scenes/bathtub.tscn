@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bak5lkmnkf5hu"]
+[gd_scene load_steps=13 format=3 uid="uid://b8bbdjhplxr1t"]
 
-[ext_resource type="Shader" uid="uid://5046hpv65kyw" path="res://Shaders/Bathtub.tres" id="1_a2pyq"]
+[ext_resource type="Shader" uid="uid://dwfqf3klk8pib" path="res://Shaders/Bathtub.tres" id="1_a2pyq"]
 [ext_resource type="ArrayMesh" uid="uid://bkao2hgoeok7m" path="res://assets/models/Bathtub.obj" id="2_qo0ly"]
-[ext_resource type="Shader" uid="uid://bfikc5otu8ynt" path="res://Shaders/Faucet.tres" id="3_qpb3v"]
+[ext_resource type="Shader" uid="uid://bmnd8i15pn2vc" path="res://Shaders/Faucet.tres" id="3_qpb3v"]
 [ext_resource type="ArrayMesh" uid="uid://bewllsnw4vwic" path="res://assets/models/Faucet.obj" id="3_uipq8"]
-[ext_resource type="Shader" uid="uid://7qxh17xh72wj" path="res://Shaders/Towels.tres" id="4_d8m1e"]
+[ext_resource type="Shader" uid="uid://dufbugi3hhvqv" path="res://Shaders/Towels.tres" id="4_d8m1e"]
 [ext_resource type="ArrayMesh" uid="uid://coycllbktht2o" path="res://assets/models/Towels.obj" id="5_jwmv4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vevof"]
@@ -20,7 +20,13 @@ render_priority = 0
 shader = ExtResource("4_d8m1e")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fu07g"]
-size = Vector3(100, 20.01, 1)
+size = Vector3(661.783, 82.5789, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0u36b"]
+size = Vector3(176.685, 92.59, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvpss"]
+size = Vector3(337.391, 134.14, 1)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 
@@ -38,5 +44,33 @@ material_override = SubResource("ShaderMaterial_c4sg1")
 mesh = ExtResource("5_jwmv4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.89216, 0.451719, 0, -0.451719, 0.89216, 6.36411, 9.50494, 0)
+transform = Transform3D(1, 0, 0, 0, 0.932519, 0.361121, 0, -0.361121, 0.932519, -40.4885, -18.4058, -127.192)
 shape = SubResource("BoxShape3D_fu07g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.911647, -0.410973, 0, 0.410973, 0.911647, -89.497, -18.4058, 128.076)
+shape = SubResource("BoxShape3D_fu07g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.914783, 0.229658, 0.33231, -0.087261, 0.915584, -0.392543, -0.394409, 0.330094, 0.857601, 206.222, -25.6158, 108.404)
+shape = SubResource("BoxShape3D_0u36b")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.9252, 0.193053, -0.326706, -0.0270801, 0.89232, 0.45059, 0.378514, -0.408038, 0.830802, 214.659, -25.1273, -103.875)
+shape = SubResource("BoxShape3D_0u36b")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.00912606, 0.547292, -0.836892, -0.028268, 0.836733, 0.54688, 0.999559, 0.0186662, 0.0231067, 244.429, -9.15778, -1.57041)
+shape = SubResource("BoxShape3D_qvpss")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.968332, -0.0464584, 0.245305, 0.0704742, 0.891715, 0.447077, -0.239512, 0.450207, -0.860202, -246.795, -25.6158, 117.22)
+shape = SubResource("BoxShape3D_0u36b")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.970324, -0.0848866, 0.226419, -0.0270801, 0.89232, 0.45059, -0.240288, -0.44335, 0.863541, -256.204, -25.1273, -111.655)
+shape = SubResource("BoxShape3D_0u36b")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0286622, -0.401814, -0.915272, -0.00780015, 0.915531, -0.402172, 0.999559, 0.0186662, 0.0231067, -288.931, -9.15778, -1.57041)
+shape = SubResource("BoxShape3D_qvpss")
