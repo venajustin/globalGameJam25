@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0oh8evcrqh7l"]
+
+[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="Shader" uid="uid://c40047eyrr1d4" path="res://Shaders/Water.tres" id="2_ttyf0"]
+[ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yajpn"]
+render_priority = 0
+shader = ExtResource("2_ttyf0")
+shader_parameter/Color = Color(0, 0.242291, 0.457021, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6clhi"]
+size = Vector2(4, 2)
+subdivide_width = 30
+subdivide_depth = 30
+
+[node name="Bathtub_Level" type="Node3D"]
+
+[node name="Bathtub" parent="." instance=ExtResource("1_7lmtm")]
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(150.571, 0, 0, 0, 150.571, 0, 0, 0, 150.571, -29.2258, -19.1877, 0)
+material_override = SubResource("ShaderMaterial_yajpn")
+mesh = SubResource("PlaneMesh_6clhi")
+
+[node name="Ducky" parent="." instance=ExtResource("3_q8ji0")]
+transform = Transform3D(0.967713, 0, -12.9215, 0, 12.9576, 0, 12.9215, 0, 0.967713, -232.241, -17.2348, -1.12273)
