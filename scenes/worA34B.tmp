@@ -14,11 +14,14 @@ shadow_enabled = true
 [node name="Water" parent="." instance=ExtResource("1_hi4q1")]
 
 [node name="Player1" parent="." instance=ExtResource("2_q0b02")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.52685, 2.59822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577929, 0)
+controls = null
+weapons = null
 
 [node name="Player2" parent="." instance=ExtResource("2_q0b02")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.55947, -21.3303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294564, 0.822679, -1.13296)
 controls = ExtResource("4_b2xwy")
+weapons = null
 
 [node name="Soap1" parent="." instance=ExtResource("3_8bjni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42815, 0, 0)

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://fyt8cynh3fv5"]
+
+[ext_resource type="PackedScene" uid="uid://cfpgwm3y0xf8j" path="res://scenes/bullet.tscn" id="1_317w6"]
+[ext_resource type="PackedScene" uid="uid://d37eajccf7g8g" path="res://scenes/weapon_models/sniper_ducky_static_textured.tscn" id="1_pf5by"]
+[ext_resource type="Script" path="res://scripts/weapons/gun.gd" id="2_y1hta"]
+
+[resource]
+script = ExtResource("2_y1hta")
+mesh_scene = ExtResource("1_pf5by")
+bullet = ExtResource("1_317w6")
+fire_rate = 1.0
+damage = 100.0
+travel_distance = 40.0
+bullet_drop = -5.0
+bullet_speed = 20.0

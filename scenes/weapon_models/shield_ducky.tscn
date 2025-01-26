@@ -2,7 +2,5 @@
 
 [ext_resource type="ArrayMesh" uid="uid://cuhhmttmhti0b" path="res://assets/models/Duckys/Tank_Ducky.obj" id="1_g1grm"]
 
-[node name="Shield_Ducky" type="Node3D"]
-
-[node name="Shield_Ducky" type="MeshInstance3D" parent="."]
+[node name="Shield_Ducky" type="MeshInstance3D"]
 mesh = ExtResource("1_g1grm")
