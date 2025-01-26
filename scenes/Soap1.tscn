@@ -36,5 +36,5 @@ mesh = ExtResource("2_fg8de")
 skeleton = NodePath("../Soap")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.986421, 0, 0, 0, 0.986421, 0, 0, 0, 0.986421, -0.0448244, 0.0280926, 0.209883)
+transform = Transform3D(0.910501, 0, 0, 0, 0.910501, 0, 0, 0, 0.910501, -0.0448244, 0.0280926, 0.209883)
 shape = SubResource("ConvexPolygonShape3D_a1r16")

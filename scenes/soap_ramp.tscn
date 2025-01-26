@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvsbcsf3gdhmn"]
+[gd_scene load_steps=7 format=3 uid="uid://cvsbcsf3gdhmn"]
 
 [ext_resource type="Shader" uid="uid://ciuumavbci1if" path="res://Shaders/Soap1.tres" id="1_kkyud"]
 [ext_resource type="ArrayMesh" uid="uid://ske23juywp7q" path="res://assets/models/Shallow_Bubble_Ramp.obj" id="2_5bssj"]
@@ -15,15 +15,25 @@ shader_parameter/Sharpness = 16.0
 render_priority = 0
 shader = ExtResource("3_dgfg7")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_by4tl"]
+points = PackedVector3Array(-2.25595, 1.01192, -0.924236, 2.86314, -0.161501, 1.44157, 2.65854, 0.103015, 1.52949, -1.1213, -0.964316, 4.12189, 0.919833, -1.44331, -3.67119, -2.59512, -0.880731, -3.10829, 0.778761, 0.805778, -3.24835, 0.463203, 1.37049, 1.37766, 2.32604, -1.16202, 3.21755, -1.61044, -1.44331, 2.7956, -1.0484, 0.243507, 4.06235, 2.6123, -0.429725, -2.94743, -2.32815, -0.565297, 3.19533, 2.04446, 0.243507, 3.64039, 2.11545, 1.24635, -0.14193, -1.89202, 0.383999, -3.81126, -1.83484, 1.38132, 0.623002, -2.03252, -1.30251, -3.53025, -0.324602, -0.705694, -4.33077, -0.163781, 1.46702, -0.758115, -2.73563, -0.318461, 1.10953, 1.5552, -0.299276, -4.04123, 1.48186, -1.44331, -3.39018, -2.59512, 0.103015, -3.53025, 1.82871, -0.704133, 4.02182, 2.72422, -0.954311, 1.4382, 2.4285, 0.103015, -3.01372, -1.58555, 1.38632, -0.913625, -2.37234, 0.878035, 0.888633, 2.14822, -1.31741, 1.40446, -0.485809, 0.243507, -4.23322, -2.08011, -0.571306, -4.06426)
+
 [node name="Node3D" type="Node3D"]
 
-[node name="Soap2" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Soap2" type="MeshInstance3D" parent="StaticBody3D"]
 visible = false
 material_override = SubResource("ShaderMaterial_vd8cl")
 mesh = ExtResource("2_5bssj")
+skeleton = NodePath("../..")
 
-[node name="Soap2_inner" type="MeshInstance3D" parent="."]
+[node name="Soap2_inner" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(0.982385, 0, 0, 0, 0.982385, 0, 0, 0, 0.982385, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_he5jy")
 mesh = ExtResource("2_5bssj")
 skeleton = NodePath("../Soap2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.982385, 0, 0, 0, 0.982385, 0, 0, 0, 0.982385, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_by4tl")

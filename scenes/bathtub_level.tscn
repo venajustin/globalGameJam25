@@ -1,6 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://12m6mey3y65b"]
 
-[ext_resource type="PackedScene" uid="uid://bak5lkmnkf5hu" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://b8bbdjhplxr1t" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
+[ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="2_pbqep"]
+[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
 [ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
@@ -18,54 +20,37 @@ sky = SubResource("Sky_rebr0")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lhx1t"]
-size = Vector3(1.11218, 1, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_tekgr"]
-
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fmoc7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 6.77088, 0)
 shadow_enabled = true
 
 [node name="Bathtub" parent="." instance=ExtResource("1_7lmtm")]
 transform = Transform3D(0.115405, 0, 0, 0, 0.115405, 0, 0, 0, 0.115405, -12.9265, 1.09308, 0)
 
+[node name="Soap1" parent="Bathtub" instance=ExtResource("2_pbqep")]
+transform = Transform3D(15.5219, 0, 0, 0, 15.5219, 0, 0, 0, 15.5219, 92.8821, -11.8111, 0)
+
+[node name="Soap2" parent="Bathtub" instance=ExtResource("2_pbqep")]
+transform = Transform3D(15.5219, 0, 0, 0, 15.5219, 0, 0, 0, 15.5219, -140.895, -11.8111, 0)
+
+[node name="Node3D" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(6.3743, -0.52638, 8.87474, 1.59621, 10.8105, -0.505287, -8.74586, 1.58938, 6.37601, 211.678, -18.1368, -99.1394)
+
+[node name="Node3D2" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-3.21143, 0.960893, 10.4131, 2.46232, 10.6563, -0.223946, -10.1633, 2.27813, -3.34462, -253.17, -18.1368, -106.042)
+
+[node name="Node3D3" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(-6.14971, 0.48577, -9.03409, 1.59621, 10.8105, -0.505287, 8.90522, -1.60225, -6.14814, -253.182, -18.1368, 119.122)
+
+[node name="Node3D4" parent="Bathtub" instance=ExtResource("3_cdl2e")]
+transform = Transform3D(3.46899, -1.01855, -10.3246, 2.46232, 10.6563, -0.223946, 10.0783, -2.25294, 3.60849, 211.69, -18.1368, 114.194)
+
 [node name="StaticBody3D" parent="." instance=ExtResource("3_s86al")]
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(2.96473, -2.9576, 0, 2.9576, 2.96473, 0, 0, 0, 4.18772, 0, -1.44313, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("PrismMesh_tekgr")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(-2.81042, 2.80366, 1.33343, 2.9576, 2.96473, 0, -0.94401, 0.941739, -3.96976, -38.9839, -1.44313, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("PrismMesh_tekgr")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.755526, 0.753709, 4.04946, 2.9576, 2.96473, 1.94148e-08, -2.86685, 2.85995, -1.06719, -18.4305, -1.29228, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
-transform = Transform3D(0.446323, 0.894872, 0, -0.894872, 0.446323, 0, 0, 0, 1, -0.197442, -0.224292, 0)
-shape = SubResource("BoxShape3D_lhx1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
-mesh = SubResource("PrismMesh_tekgr")
 
 [node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 5.92821)
