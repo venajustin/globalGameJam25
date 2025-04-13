@@ -18,6 +18,7 @@ extends Node
 }
 @onready var game_over := $GameOver
 
+var keyboardInput:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,6 +38,9 @@ func _ready() -> void:
 func _process(_delta:float) -> void:
 	if Input.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("toggle_input_mode"):
+		keyboardInput = !keyboardInput
+
 
 func end_game(player:int) ->void:
 	var player_text:String = "Tie game"

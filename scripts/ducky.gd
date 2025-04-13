@@ -17,6 +17,8 @@ var curr_weapon_i:int = 0
 
 @onready var hit_effect_shader:ShaderMaterial = $LocalMeshPivot/Normal_Ducky_Textured.material_overlay
 
+@onready var game_root := get_tree().root.get_child(0)
+
 signal damage_taken
 signal swap_weapon
 signal register_weapon
@@ -70,7 +72,6 @@ func swap_mesh_to_weapon() -> void:
 
 
 
-
 func _physics_process(delta: float) -> void:
 	
 	var turn_desired:float = 0
@@ -97,17 +98,21 @@ func _physics_process(delta: float) -> void:
 		# hit_sound.play()
 		curr_weapon.fire_held(last_fire, velocity + downwards_start, bullet_spawn, world_ref, global_transform.basis.y, self, gun_local_last_fire, fire_sound)
 		last_fire = 0
-	
-	var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
-	# var look_yaw:float = Input.get_axis(controls.look_right, controls.look_left)
-	cam_pivot.rotate(Vector3(0, 1, 0), look_input.x * delta * CAM_SPEED)
-	# var look_pitch:float = Input.get_axis(controls.look_up, controls.look_down)
-	
-	cam_pivot.rotate_object_local(Vector3(1, 0, 0), look_input.y * delta * CAM_SPEED)
-	if cam_pivot.transform.basis.y.y < 0:
-		cam_pivot.rotate_object_local(Vector3(1, 0, 0), -look_input.y * delta * CAM_SPEED)
 
-	
+
+	if game_root.keyboardInput:
+		cam_pivot.rotation = rotation
+	else:
+		var look_input := Input.get_vector(controls.look_right, controls.look_left,  controls.look_down, controls.look_up)
+		# var look_yaw:float = Input.get_axis(controls.look_right, controls.look_left)
+		cam_pivot.rotate(Vector3(0, 1, 0), look_input.x * delta * CAM_SPEED)
+		# var look_pitch:float = Input.get_axis(controls.look_up, controls.look_down)
+		
+		cam_pivot.rotate_object_local(Vector3(1, 0, 0), look_input.y * delta * CAM_SPEED)
+		if cam_pivot.transform.basis.y.y < 0:
+			cam_pivot.rotate_object_local(Vector3(1, 0, 0), -look_input.y * delta * CAM_SPEED)
+
+
 	var desired_direction := Input.get_vector(controls.turn_left, controls.turn_right, controls.move_forward, controls.move_backward)
 	if not is_on_floor():
 		velocity += get_gravity() * delta

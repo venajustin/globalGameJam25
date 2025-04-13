@@ -50,7 +50,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2(157.068, -14.9138)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture3D_oobp3")
 nodes/vertex/2/position = Vector2(-120, 200)
 nodes/vertex/3/node = SubResource("VisualShaderNodeInput_faalq")

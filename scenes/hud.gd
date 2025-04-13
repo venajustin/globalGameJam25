@@ -9,6 +9,10 @@ extends Control
 @export var deselect_color:Color
 @export var select_color:Color
 
+@onready var root := get_tree().root.get_child(0)
+@onready var controlmode := $"./ControlMode"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -16,7 +20,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if root.keyboardInput:
+		controlmode.text = "Keyboard Mode (F1 to toggle)"
+	else:
+		controlmode.text = ""
 
 
 func player_damage(new_health:int) -> void: 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://12m6mey3y65b"]
+[gd_scene load_steps=17 format=3 uid="uid://12m6mey3y65b"]
 
 [ext_resource type="PackedScene" uid="uid://bak5lkmnkf5hu" path="res://scenes/bathtub.tscn" id="1_7lmtm"]
 [ext_resource type="Texture2D" uid="uid://cxajwnb7cm56p" path="res://assets/Textures/en_suite_2k.hdr" id="1_hx02n"]
 [ext_resource type="PackedScene" uid="uid://bbexfjxp7asp0" path="res://scenes/Soap1.tscn" id="2_pbqep"]
-[ext_resource type="PackedScene" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
+[ext_resource type="PackedScene" uid="uid://cvsbcsf3gdhmn" path="res://scenes/soap_ramp.tscn" id="3_cdl2e"]
 [ext_resource type="PackedScene" uid="uid://2g4r8qbfug68" path="res://scenes/ducky.tscn" id="3_q8ji0"]
 [ext_resource type="PackedScene" uid="uid://ddx7vyhi40k4t" path="res://scenes/still_water.tscn" id="3_s86al"]
 [ext_resource type="Resource" uid="uid://dw3o41l2vf062" path="res://resources/p2_controls.tres" id="4_en57g"]
@@ -45,6 +45,20 @@ volumetric_fog_anisotropy = -0.16
 volumetric_fog_length = 48.94
 volumetric_fog_ambient_inject = 0.57
 adjustment_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_21isn"]
+script/source = "extends Resource
+
+var time:float
+"
+
+[sub_resource type="Resource" id="Resource_owq13"]
+resource_local_to_scene = true
+script = SubResource("GDScript_21isn")
+
+[sub_resource type="Resource" id="Resource_yngtv"]
+resource_local_to_scene = true
+script = SubResource("GDScript_21isn")
 
 [node name="World" type="Node3D"]
 
@@ -105,8 +119,10 @@ transform = Transform3D(5.00056, -1.46824, -14.883, 3.54944, 15.3611, -0.322819,
 [node name="Player1" parent="." instance=ExtResource("3_q8ji0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.9472, 0.998137, 0)
 weapons = Array[Resource]([ExtResource("7_cjdqi"), ExtResource("9_wumvs"), ExtResource("8_ciqxt")])
+gun_local_last_fire = SubResource("Resource_owq13")
 
 [node name="Player2" parent="." instance=ExtResource("3_q8ji0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.3199, 1.14388, 0)
 controls = ExtResource("4_en57g")
 weapons = Array[Resource]([ExtResource("7_cjdqi"), ExtResource("9_wumvs"), ExtResource("8_ciqxt")])
+gun_local_last_fire = SubResource("Resource_yngtv")

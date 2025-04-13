@@ -31,7 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://b6jbs4nmlxnsm" path="res://assets/Sound Effects/bubbles/pop_bubble_-08.mp3" id="25_56hdc"]
 [ext_resource type="AudioStream" uid="uid://bsxqg74fvk0sc" path="res://assets/Sound Effects/bubbles/pop_bubble_-09.mp3" id="26_txw0y"]
 
-[sub_resource type="Resource" id="Resource_o0mj7"]
+[sub_resource type="Resource" id="Resource_1s3h1"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("3_eiruf")
@@ -44,7 +44,7 @@ travel_distance = 150.0
 bullet_drop = 2.0
 bullet_speed = 30.0
 
-[sub_resource type="Resource" id="Resource_lqjci"]
+[sub_resource type="Resource" id="Resource_4syjg"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("6_0hmjv")
@@ -57,7 +57,7 @@ travel_distance = 150.0
 bullet_drop = 2.0
 bullet_speed = 30.0
 
-[sub_resource type="Resource" id="Resource_pfxom"]
+[sub_resource type="Resource" id="Resource_hc2fa"]
 resource_local_to_scene = true
 script = ExtResource("4_po5vk")
 mesh_scene = ExtResource("5_2gxea")
@@ -117,7 +117,7 @@ stream_14/stream = ExtResource("18_rya1c")
 [node name="Ducky" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_7kdm6")
-weapons = Array[Resource]([SubResource("Resource_o0mj7"), SubResource("Resource_lqjci"), SubResource("Resource_pfxom")])
+weapons = Array[Resource]([SubResource("Resource_1s3h1"), SubResource("Resource_4syjg"), SubResource("Resource_hc2fa")])
 gun_local_last_fire = ExtResource("10_xskbl")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
